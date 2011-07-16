@@ -58,7 +58,7 @@ html2canvas.prototype.nodeStartsStackingContext = function( node, zIndex, opacit
 	      IE8 = this.$.browser.IE8;
 
 	if(opacity == null){ opacity = this.$.opacity ( node ); }
-	if(zIndex  == null){ zIndex  = this.$.zIndex  ( node ); }
+	if(zIndex  == null){ zIndex  = this.$.zIndex  ( node ) || 0; }
 
 	zIndex  = parseInt(zIndex);
 	opacity = ~-opacity;
