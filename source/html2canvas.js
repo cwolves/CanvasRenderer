@@ -1,25 +1,33 @@
-(function(){
-	function html2canvas( opts ){
-		this.canvas = new html2canvas.canvasRenderer( opts );
+function html2canvas( opts, loadCB ){
+	this.$       = html2canvas.bridge;
+	this.loadCB  = loadCB;
+
+	for(i=0, l=this.initCtr=this.init.length; i<l; i++){
+		this.init[i].call( this, opts );
 	}
+}
 
-	html2canvas.prototype = {
-		render : function(){
-			this.canvas.render( document.body );
-		},
+html2canvas.prototype = {
+	init : [],
+	doneInit : function(){
+		var self = this;
+		setTimeout(function(){ self._doneInit(); }, 1);
+	},
 
-		appendCanvasNodeTo : function( node ){
-			this.canvas.appendCanvasNodeTo( node );
-		},
+	_doneInit : function(){
+		
+		--this.initCtr || this.loadCB();
+	},
 
-		hide : function(){
-			this.canvas.canvas.style.display = 'none';
-		},
+	hide : function(){
+		this.canvas.style.display = 'none';
 
-		show : function(){
-			this.canvas.canvas.style.display = 'block';
-		}
-	};
+		return this;
+	},
 
-	window.html2canvas = html2canvas;
-})();
+	show : function(){
+		this.canvas.style.display = 'block';
+
+		return this;
+	}
+};

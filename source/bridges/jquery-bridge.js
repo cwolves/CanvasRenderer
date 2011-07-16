@@ -1,5 +1,11 @@
 (function( $ ){
 	var bridge = window.html2canvas.bridge = {
+		// IE7/8/9 detection needex for z-index logic
+		browser : {
+			IE7 : false,
+			IE8 : false,
+			IE9 : false
+		},
 		createElement   : function( elem )        { return $('<' + elem + '></' + elem + '>').get(0); },
 		getElements     : function( selector )    { return $(selector).get(); },
 		camelCase       : $.camelCase,

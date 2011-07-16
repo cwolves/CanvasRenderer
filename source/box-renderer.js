@@ -1,45 +1,43 @@
-(function( $ ){
-	function drawBoundingBox( node, rect, R ){
-		var wTop = $.unitsToPx( $.borderTopWidth   ( node ), node ),
-		  wRight = $.unitsToPx( $.borderRightWidth ( node ), node ),
-		 wBottom = $.unitsToPx( $.borderBottomWidth( node ), node ),
-		   wLeft = $.unitsToPx( $.borderLeftWidth  ( node ), node ),
-		     box = { top : wTop, right : wRight, bottom : wBottom, left : wLeft },
-		 bgColor = $.backgroundColor( node ),
-		 bgImage = $.backgroundImage( node );
+html2canvas.prototype.drawBoundingBox = function( node, rect ){
+	var wTop = this.$.unitsToPx( this.$.borderTopWidth   ( node ), node ),
+	  wRight = this.$.unitsToPx( this.$.borderRightWidth ( node ), node ),
+	 wBottom = this.$.unitsToPx( this.$.borderBottomWidth( node ), node ),
+	   wLeft = this.$.unitsToPx( this.$.borderLeftWidth  ( node ), node ),
+	     box = { top : wTop, right : wRight, bottom : wBottom, left : wLeft },
+	 bgColor = this.$.backgroundColor( node ),
+	 bgImage = this.$.backgroundImage( node );
 
-		// draw borders
-		if( wTop    ){ drawLine( rect.left               , rect.top + wTop / 2      , rect.right             , rect.top + wTop / 2      , wTop   , $.borderTopColor   ( node ), R ); }
-		if( wBottom ){ drawLine( rect.left               , rect.bottom - wBottom / 2, rect.right             , rect.bottom - wBottom / 2, wBottom, $.borderBottomColor( node ), R ); }
-		if( wLeft   ){ drawLine( rect.left + wLeft / 2   , rect.top                 , rect.left + wLeft / 2  , rect.bottom              , wLeft  , $.borderLeftColor  ( node ), R ); }
-		if( wRight  ){ drawLine( rect.right - wRight / 2 , rect.top                 , rect.right - wRight / 2, rect.bottom              , wRight , $.borderRightColor ( node ), R ); }
+	// draw borders
+	if( wTop    ){ this.drawLine( rect.left               , rect.top + wTop / 2      , rect.right             , rect.top + wTop / 2      , wTop   , this.$.borderTopColor   ( node ) ); }
+	if( wBottom ){ this.drawLine( rect.left               , rect.bottom - wBottom / 2, rect.right             , rect.bottom - wBottom / 2, wBottom, this.$.borderBottomColor( node ) ); }
+	if( wLeft   ){ this.drawLine( rect.left + wLeft / 2   , rect.top                 , rect.left + wLeft / 2  , rect.bottom              , wLeft  , this.$.borderLeftColor  ( node ) ); }
+	if( wRight  ){ this.drawLine( rect.right - wRight / 2 , rect.top                 , rect.right - wRight / 2, rect.bottom              , wRight , this.$.borderRightColor ( node ) ); }
 
-		// draw background color
-		drawFilledRect( rect.left + wLeft, rect.top + wTop, rect.width - wLeft - wRight, rect.height - wTop - wBottom, bgColor, R);
+	// draw background color
+	this.drawFilledRect( rect.left + wLeft, rect.top + wTop, rect.width - wLeft - wRight, rect.height - wTop - wBottom, bgColor );
 
-		if(bgImage){
-			html2canvas.renderBackgroundImage( node, rect, box, R, bgImage );
-		}
-
-		return box;
+	if(bgImage){
+		this.renderBackgroundImage( node, rect, box, bgImage );
 	}
 
-	function drawLine( x1, y1, x2, y2, width, color, R ){
-		R.setStrokeColor( color )
-		    .setLineWidth  ( width );
+	return box;
+}
 
-		R.ctx.beginPath();
-		R.ctx.moveTo( x1, y1 );
-		R.ctx.lineTo( x2, y2 );
-		R.ctx.stroke();
-	}
+html2canvas.prototype.drawLine = function( x1, y1, x2, y2, width, color ){
+	this.setStrokeColor( color )
+	    .setLineWidth  ( width );
 
-	function drawFilledRect( x1, y1, x2, y2, color, R ){
-		R.setFillStyle( color );
-		R.ctx.fillRect( x1, y1, x2, y2 );
-	}
+	this.ctx.beginPath();
+	this.ctx.moveTo( x1, y1 );
+	this.ctx.lineTo( x2, y2 );
+	this.ctx.stroke();
+}
 
-	html2canvas.renderBox = function( node, rect, renderer ){
-		drawBoundingBox( node, rect, renderer );
-	};
-})( html2canvas.bridge );
+html2canvas.prototype.drawFilledRect = function( x1, y1, x2, y2, color ){
+	this.setFillStyle( color );
+	this.ctx.fillRect( x1, y1, x2, y2 );
+}
+
+html2canvas.prototype.renderBox = function( node, rect ){
+	this.drawBoundingBox( node, rect );
+};
