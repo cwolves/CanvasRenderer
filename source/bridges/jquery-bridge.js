@@ -4,6 +4,9 @@
 		getElements     : function( selector )    { return $(selector).get(); },
 		camelCase       : $.camelCase,
 		noop            : function(){},
+		trim            : $.trim,
+		extend          : $.extend,
+
 		backgroundImage : function( node ){
 			var bgImg = $( node ).css( 'background-image' );
 
@@ -11,13 +14,14 @@
 
 			return /\((.*?)\)/.exec( bgImg )[ 1 ];
 		},
-		extend          : $.extend,
+
 		windowSize      : function(){
 			return {
 				width  : $(window).width(),
 				height : $(window).height()
 			};
 		},
+
 		documentScroll  : function(){
 			var $body = $(document.body);
 
@@ -26,6 +30,7 @@
 				left : $body.scrollLeft()
 			};
 		},
+
 		getBoundingRect : function( node ){
 			var $node = $( node ),
 			   offset = $node.offset()
@@ -49,7 +54,7 @@
 		addEvent : function( node, event, fn ){
 			$( node ).bind( event, fn );
 		},
-		trim : $.trim,
+
 		textContent : function( node ){
 			return node.nodeValue || node.innerText;
 		}

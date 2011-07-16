@@ -25,6 +25,8 @@
 		this.canvas.height = canvasSize.height;
 
 		this.ctx    = this.canvas.getContext('2d');
+
+		opts.css && ( this.canvas.style.cssText = opts.css );
 	};
 
 	canvasRenderer.prototype = {
@@ -32,7 +34,7 @@
 		setStrokeColor  : function( color ){ ( this._strokeColor  == color ) || ( this.ctx.strokeStyle  = this._strokeColor  = color   ); return this; },
 		setLineWidth    : function( width ){ ( this._lineWidth    == width ) || ( this.ctx.lineWidth    = this._lineWidth    = 0|width ); return this; },
 		setFillStyle    : function( style ){ ( this._fillStyle    == style ) || ( this.ctx.fillStyle    = this._fillStyle    = style   ); return this; },
-		setFont         : function( font  ){ ( this._font         == font  ) || ( this.ctx.cont         = this._font         = font    ); return this; },
+		setFont         : function( font  ){ ( this._font         == font  ) || ( this.ctx.font         = this._font         = font    ); return this; },
 		setTextAlign    : function( align ){ ( this._textAlign    == align ) || ( this.ctx.textAlign    = this._textAlign    = align   ); return this; },
 		setTextBaseline : function( base  ){ ( this._textBaseline == base  ) || ( this.ctx.textBaseline = this._textBaseline = base    ); return this; },
 
