@@ -7,6 +7,9 @@ html2canvas.prototype.drawBoundingBox = function( node, rect ){
 	 bgColor = this.$.backgroundColor( node ),
 	 bgImage = this.$.backgroundImage( node );
 
+	// set global opacity
+	this.setOpacity( node.opacity );
+
 	// draw borders
 	if( wTop    ){ this.drawLine( rect.left               , rect.top + wTop / 2      , rect.right             , rect.top + wTop / 2      , wTop   , this.$.borderTopColor   ( node ) ); }
 	if( wBottom ){ this.drawLine( rect.left               , rect.bottom - wBottom / 2, rect.right             , rect.bottom - wBottom / 2, wBottom, this.$.borderBottomColor( node ) ); }
@@ -15,9 +18,6 @@ html2canvas.prototype.drawBoundingBox = function( node, rect ){
 
 	// draw background color
 	this.drawFilledRect( rect.left + wLeft, rect.top + wTop, rect.width - wLeft - wRight, rect.height - wTop - wBottom, bgColor );
-
-	// set global opacity
-	this.setOpacity( node.opacity );
 
 	if(bgImage){
 		this.renderBackgroundImage( node, rect, box, bgImage );

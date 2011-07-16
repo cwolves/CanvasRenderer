@@ -7,7 +7,8 @@ html2canvas.prototype.getElementsByZIndex = function( node, running ){
 	}
 
 	// running values need to go here
-	var opacity = parseFloat( this.$.opacity( node ) ) * ( running.opacity == null ? 1 : running.opacity );
+	var opacity = this.$.opacity( node );
+	    opacity = parseFloat( opacity == null ? 1 : opacity ) * ( running.opacity == null ? 1 : running.opacity );
 	node.opacity = opacity == null ? 1 : opacity;
 
 	if(!node.childNodes.length){
