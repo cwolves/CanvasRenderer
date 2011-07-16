@@ -12,7 +12,7 @@
 
 			if(!bgImg || (bgImg == 'none')){ return ''; }
 
-			return /\((.*?)\)/.exec( bgImg )[ 1 ];
+			return /\("?(.*?)"?\)/.exec( bgImg )[ 1 ];
 		},
 
 		windowSize      : function(){

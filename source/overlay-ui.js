@@ -1,6 +1,12 @@
 (function( $ ){
 	var canvas, visible, info;
 
+	function toggleText(){
+		canvas[ visible ? 'hide' : 'show' ]();
+		info.innerText = visible ? 'HTML' : 'Canvas';
+		visible ^= 1;
+	}		
+
 	$.addEvent( document.body, 'click', function(){
 		if( !canvas ){
 			html2canvas.images.preLoad( function(){
@@ -12,10 +18,10 @@
 				info.style.cssText = 'position : fixed; top: 0px; right: 0px; z-index: 10000; padding : 5px; border: 2px solid #EEE; border-width: 0 0 2px 2px;';
 				document.body.appendChild( info );
 
-				canvas[ visible ? 'hide' : 'show' ]();
-				info.innerText = visible ? 'HTML' : 'Canvas';
-				visible ^= 1;
+				toggleText();
 			});
 		}
+
+		canvas && toggleText();
 	});
 })( html2canvas.bridge );
