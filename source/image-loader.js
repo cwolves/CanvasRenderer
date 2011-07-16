@@ -1,64 +1,72 @@
 (function( $ ){
-	var images = html2canvas.images = {
-		getImage : function( src, cb ){
-			var loadImg = loading[ src ];
-			if( loadImg ){
-				if( loadImg.loaded && cb ){
-					cb( loadImg.img );
+	var imgs = {},
+	     cbs = [];
 
-				}else if( cb ){
-					loadImg.cbs.push( cb );
+	html2canvas.images = {
+		getImage : function( path ){
+			return imgs[ path ] && imgs[ path ].img;
+		},
+
+		addImage : function( path, cb ){
+			if( imgs[ path ] ){
+				if( imgs[ path ].loaded ){
+					cb();
+				}else{
+					imgs[ path ].cbs.push( cb );
 				}
+
 				return;
 			}
 
-			var img = new Image();
-			img.src = src;
+			var img = new Image(),
+			    cbs = [ cb ],
 
-			var loadImg = loading[ src ] = {
+			 imgObj = {
 				img    : img,
-				loaded : false,
-				cbs    : [],
-				onload : function( res ){
-					this.loaded = true;
-					for(var i=0, l=this.cbs.length; i<l; i++){
-						this.cbs[ i ].call( null, this.img );
-					}
-				}
+				cbs    : cbs,
+				loaded : false
+			 };
+
+			img.onload = function(){
+				this.loaded = true;
+				for(var i=0, l=cbs.length; i<l; i++){ cbs[i](); }
 			};
+			img.onerror = function(){
+				imgObj.img    = null;
 
-			if( img.height ){
-				cb && cb( img );
-				loadImg.loaded = true;
+				img.onload();
+			};
+			img.src = path;
 
-			}else{
-				img.onload = function(){
-					loadImg.onload( loadImg.img );
-				};
+			// if image is already loaded
+			img.width && setTimeout(img.onload, 1);
 
-				img.onerror = function(){
-					loadImg.onload( null );
-				}
+			imgs[ path ] = imgObj;
+		},
+
+		preLoad : function( cb ){
+			var   imgs = $.getElements( 'img' ),
+			  allNodes = $.getElements( '*' ),
+			       ctr = 1;
+
+			function done(){
+				if(!--ctr){ cb(); }
+			}
+
+			// pre-load all img nodes
+			for(var i=0, l=imgs.length; i<l; i++){
+				ctr++;
+				this.addImage( imgs[i].src, done );
+			}
+
+			// pre-load all background images
+			for(var i=0, l=allNodes.length; i<l; i++){
+				var bgImage = $.backgroundImage( allNodes[i] );
+				if(!bgImage || ( bgImage == 'none' )){ continue; }
+
+				ctr++;
+				this.addImage( bgImage, done );
 			}
 		}
 	}
-
-
-	var loading = {},
-	       imgs = $.getElements( 'img' ),
-	   allNodes = $.getElements( '*' );
-
-	// pre-load all img nodes
-	for(var i=0, l=imgs.length; i<l; i++){
-		images.getImage( imgs[i].src );
-	}
-
-	// pre-load all background images
-	for(var i=0, l=allNodes.length; i<l; i++){
-		var bgImage = $.backgroundImage( allNodes[i] );
-		if(!bgImage || ( bgImage == 'none' )){ continue; }
-
-		images.getImage( bgImage );
-	}
-
 })( html2canvas.bridge );

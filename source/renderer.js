@@ -43,10 +43,11 @@
 			    type = node.nodeType;
 
 			if( type == NODES.element ){
+				var box = html2canvas.renderBox( node, rect, this );
+
 				switch( node.nodeName ){
-					case 'IMG'   : html2canvas.renderImage ( node, rect, this ); break;
-					case 'CANVAS': html2canvas.renderCanvas( node, rect, this ); break;
-					default      : html2canvas.renderBox   ( node, rect, this ); break;
+					case 'IMG'   : html2canvas.renderImage ( node, rect, {}, this ); break;
+					case 'CANVAS': html2canvas.renderCanvas( node, rect, {}, this ); break;
 				}
 			}else if( type == NODES.text ){
 				html2canvas.renderText( node, rect, this);

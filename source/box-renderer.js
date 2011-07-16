@@ -4,6 +4,7 @@
 		  wRight = $.unitsToPx( $.borderRightWidth ( node ), node ),
 		 wBottom = $.unitsToPx( $.borderBottomWidth( node ), node ),
 		   wLeft = $.unitsToPx( $.borderLeftWidth  ( node ), node ),
+		     box = { top : wTop, right : wRight, bottom : wBottom, left : wLeft },
 		 bgColor = $.backgroundColor( node ),
 		 bgImage = $.backgroundImage( node );
 
@@ -15,6 +16,12 @@
 
 		// draw background color
 		drawFilledRect( rect.left + wLeft, rect.top + wTop, rect.width - wLeft - wRight, rect.height - wTop - wBottom, bgColor, R);
+
+		if(bgImage){
+			html2canvas.renderBackgroundImage( node, rect, box, R, bgImage );
+		}
+
+		return box;
 	}
 
 	function drawLine( x1, y1, x2, y2, width, color, R ){
