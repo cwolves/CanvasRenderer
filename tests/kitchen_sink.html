@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<style>
+html, body {
+	padding : 0px;
+	margin  : 0px;
+}
+
+.box1 {
+	border       : 1px solid #F00;
+	border-right : 13px solid green;
+	border-left  : 13px solid green;
+	width        : 100px;
+	height       : 100px;
+}
+
+.box2 {
+	border     : 3px solid teal;
+	background : #EEE;
+}
+
+.box3 {
+	border     : 2px solid orange;
+	background : yellow;
+}
+</style>
+</head>
+<body>
+<script type="text/javascript" src="../source/externals/jquery-min.js"></script>
+<script type="text/javascript" src="../source/html2canvas.js"          ></script>
+<script type="text/javascript" src="../source/bridges/jquery-bridge.js"></script>
+<script type="text/javascript" src="../source/image-loader.js"         ></script>
+<script type="text/javascript" src="../source/logger.js"               ></script>
+<script type="text/javascript" src="../source/renderer.js"             ></script>
+<script type="text/javascript" src="../source/box-renderer.js"         ></script>
+<script type="text/javascript" src="../source/image-renderer.js"       ></script>
+<script type="text/javascript" src="../source/text-renderer.js"        ></script>
+<script type="text/javascript" src="../source/ui.js"                   ></script>
+
+	<div class="box1">
+		This is a test of the screenshot system.  This is only a test.
+	</div>
+	<br />
+	<div class="box2">
+		<img src="images/fish.png" width="300" height="100">
+		<img src="images/fish.png" width="100" height="100">
+		<div class="box3">
+			another box
+		</div>
+	</div>
+	<br />
+</body>
+</html>
