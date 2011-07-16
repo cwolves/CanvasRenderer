@@ -10,7 +10,7 @@
 	$.addEvent( document.body, 'click', function(){
 		if( !canvas ){
 			canvas = new html2canvas(
-				{ css : 'position: fixed; top: 0px; left: 0px; z-index: 10000' },
+				{ css : 'position: absolute; top: 0px; left: 0px; z-index: 10000' },
 				function(){
 					canvas
 						.render      ( document.body )

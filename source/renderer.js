@@ -39,23 +39,23 @@ html2canvas.prototype.setTextAlign    = function( align ){ ( this._textAlign    
 html2canvas.prototype.setTextBaseline = function( base  ){ ( this._textBaseline == base  ) || ( this.ctx.textBaseline = this._textBaseline = base    ); return this; };
 
 html2canvas.prototype.render = function( node ){
-	var rect = this.$.getBoundingRect( node ),
-	    type = node.nodeType;
+	var nodes = this.getElementsByZIndex( node );
+console.log(nodes);
+	for(var i=0, l=nodes.length; i<l; i++){
+		var node = nodes[i],
+		    rect = this.$.getBoundingRect( node ),
+		    type = node.nodeType;
 
-	if( type == this.NODETYPES.element ){
-		var box = this.renderBox( node, rect, this );
+		if( type == this.NODETYPES.element ){
+			var box = this.renderBox( node, rect, this );
 
-		switch( node.nodeName ){
-			case 'IMG'   : this.renderImage ( node, rect, {}, this ); break;
-			case 'CANVAS': this.renderCanvas( node, rect, {}, this ); break;
+			switch( node.nodeName ){
+				case 'IMG'   : this.renderImage ( node, rect, {}, this ); break;
+				case 'CANVAS': this.renderCanvas( node, rect, {}, this ); break;
+			}
+		}else if( type == this.NODETYPES.text ){
+			this.renderText( node, rect, this);
 		}
-	}else if( type == this.NODETYPES.text ){
-		this.renderText( node, rect, this);
-	}
-
-	var children = node.childNodes;
-	for(var i=0, l=children.length; i<l; i++){
-		this.render( children[ i ] );
 	}
 
 	return this;

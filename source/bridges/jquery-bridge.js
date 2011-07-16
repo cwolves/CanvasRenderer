@@ -86,7 +86,7 @@ border-top-color border-right-color border-bottom-color border-left-color \
 background-color background-repeat background-attachment background-position \
 font-family font-style font-variant font-weight font-size color \
 word-spacing letter-spacing text-decoration vertical-align text-transform text-align text-indent line-height white-space \
-list-style-type list-style-image list-style-position '
+list-style-type list-style-image list-style-position opacity position z-index'
 	.split(' '), function( i, name ){
 		if( !name ){ return; }
 
