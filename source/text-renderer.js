@@ -1,7 +1,7 @@
 (function( $ ){
 	function setFont( txt, rect, R ){
 		// font-style font-variant font-weight font-size/line-height font-family
-		var    node = txt.parentElement,
+		var    node = txt.parentNode,
 
 		      style = $.fontStyle     ( node ),
 		    variant = $.fontVariant   ( node ),
