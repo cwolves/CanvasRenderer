@@ -39,7 +39,7 @@ html2canvas.prototype.drawText = function( txt, rect ){
 		range.setEnd  ( txt, chrCtr + strLen );
 
 		var rect = range.getBoundingClientRect();
-console.log(range.toString(), rect.left);
+
 		this.ctx.fillText( splt[ ix ], rect.left, rect.top + rect.height);
 
 		chrCtr += strLen + 1;
