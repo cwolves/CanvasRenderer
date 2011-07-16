@@ -15,13 +15,14 @@ html2canvas.prototype.analyzeFont = function( txt, rect ){
 	this
 		.setFillStyle   ( color )
 		.setFont        ( style + ' ' + variant + ' ' + weight + ' ' + size + ' ' + family )
-		.setTextAlign   ( align )   // TODO: CSS has "justify", Canvas doesn't
+//		.setTextAlign   ( align )   // TODO: CSS has "justify", Canvas doesn't
 		.setTextBaseline( 'bottom' ); // TODO: these don't match up between CSS & Canvas, adjust later
 }
 
 html2canvas.prototype.drawText = function( txt, rect ){
 	var range = document.createRange();
 	range.selectNode( txt );
+
 	var splt = range.toString().split(/\s/),
 	     len = splt.length,
 	  chrCtr = 0,
@@ -38,7 +39,7 @@ html2canvas.prototype.drawText = function( txt, rect ){
 		range.setEnd  ( txt, chrCtr + strLen );
 
 		var rect = range.getBoundingClientRect();
-
+console.log(range.toString(), rect.left);
 		this.ctx.fillText( splt[ ix ], rect.left, rect.top + rect.height);
 
 		chrCtr += strLen + 1;
