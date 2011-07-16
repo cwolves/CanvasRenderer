@@ -16,6 +16,9 @@ html2canvas.prototype.drawBoundingBox = function( node, rect ){
 	// draw background color
 	this.drawFilledRect( rect.left + wLeft, rect.top + wTop, rect.width - wLeft - wRight, rect.height - wTop - wBottom, bgColor );
 
+	// set global opacity
+	this.setOpacity( node.opacity );
+
 	if(bgImage){
 		this.renderBackgroundImage( node, rect, box, bgImage );
 	}

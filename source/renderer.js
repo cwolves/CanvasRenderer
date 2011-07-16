@@ -31,16 +31,17 @@ html2canvas.prototype.init.push(function( opts ){
 });
 
 // ctx caching functions
-html2canvas.prototype.setStrokeColor  = function( color ){ ( this._strokeColor  == color ) || ( this.ctx.strokeStyle  = this._strokeColor  = color   ); return this; };
-html2canvas.prototype.setLineWidth    = function( width ){ ( this._lineWidth    == width ) || ( this.ctx.lineWidth    = this._lineWidth    = 0|width ); return this; };
-html2canvas.prototype.setFillStyle    = function( style ){ ( this._fillStyle    == style ) || ( this.ctx.fillStyle    = this._fillStyle    = style   ); return this; };
-html2canvas.prototype.setFont         = function( font  ){ ( this._font         == font  ) || ( this.ctx.font         = this._font         = font    ); return this; };
-html2canvas.prototype.setTextAlign    = function( align ){ ( this._textAlign    == align ) || ( this.ctx.textAlign    = this._textAlign    = align   ); return this; };
-html2canvas.prototype.setTextBaseline = function( base  ){ ( this._textBaseline == base  ) || ( this.ctx.textBaseline = this._textBaseline = base    ); return this; };
+html2canvas.prototype.setStrokeColor  = function( color   ){ ( this._strokeColor  == color   ) || ( this.ctx.strokeStyle  = this._strokeColor  = color   ); return this; };
+html2canvas.prototype.setLineWidth    = function( width   ){ ( this._lineWidth    == width   ) || ( this.ctx.lineWidth    = this._lineWidth    = 0|width ); return this; };
+html2canvas.prototype.setFillStyle    = function( style   ){ ( this._fillStyle    == style   ) || ( this.ctx.fillStyle    = this._fillStyle    = style   ); return this; };
+html2canvas.prototype.setFont         = function( font    ){ ( this._font         == font    ) || ( this.ctx.font         = this._font         = font    ); return this; };
+html2canvas.prototype.setTextAlign    = function( align   ){ ( this._textAlign    == align   ) || ( this.ctx.textAlign    = this._textAlign    = align   ); return this; };
+html2canvas.prototype.setTextBaseline = function( base    ){ ( this._textBaseline == base    ) || ( this.ctx.textBaseline = this._textBaseline = base    ); return this; };
+html2canvas.prototype.setOpacity      = function( opacity ){ ( this._globalAlpha  == opacity ) || ( this.ctx.globalAlpha  = this._globalAlpha  = opacity ); return this; };
 
 html2canvas.prototype.render = function( node ){
 	var nodes = this.getElementsByZIndex( node );
-console.log(nodes);
+
 	for(var i=0, l=nodes.length; i<l; i++){
 		var node = nodes[i],
 		    rect = this.$.getBoundingRect( node ),

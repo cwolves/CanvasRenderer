@@ -66,4 +66,6 @@ html2canvas.prototype.init.push(function( opts ){
 		ctr++;
 		this.addImage( bgImage, done );
 	}
+
+	done();
 });
