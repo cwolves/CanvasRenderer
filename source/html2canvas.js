@@ -10,6 +10,14 @@
 
 		appendCanvasNodeTo : function( node ){
 			this.canvas.appendCanvasNodeTo( node );
+		},
+
+		hide : function(){
+			this.canvas.canvas.style.display = 'none';
+		},
+
+		show : function(){
+			this.canvas.canvas.style.display = 'block';
 		}
 	};
 

@@ -3,8 +3,10 @@
 <head>
 <style>
 html, body {
-	padding : 0px;
-	margin  : 0px;
+	padding     : 0px;
+	margin      : 0px;
+	background  : #FFF;
+	font-family : arial;
 }
 
 .box1 {
@@ -24,6 +26,12 @@ html, body {
 	border     : 2px solid orange;
 	background : yellow;
 }
+
+.box4 {
+	border     : 2px solid blue;
+	background : url(images/background_25.JPG);
+	height     : 100px;
+}
 </style>
 </head>
 <body>
@@ -36,7 +44,7 @@ html, body {
 <script type="text/javascript" src="../source/box-renderer.js"         ></script>
 <script type="text/javascript" src="../source/image-renderer.js"       ></script>
 <script type="text/javascript" src="../source/text-renderer.js"        ></script>
-<script type="text/javascript" src="../source/ui.js"                   ></script>
+<script type="text/javascript" src="../source/overlay-ui.js"           ></script>
 
 	<div class="box1">
 		This is a test of the screenshot system.  This is only a test.
@@ -49,6 +57,7 @@ html, body {
 			another box
 		</div>
 	</div>
+	<div class="box4"></div>
 	<br />
 </body>
 </html>
