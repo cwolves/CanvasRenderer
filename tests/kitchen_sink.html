@@ -2,102 +2,80 @@
 <html>
 <head>
 <style>
-html, body {
-	padding     : 0px;
-	margin      : 0px;
-	background  : #FFF;
-	font-family : arial;
+body {
+	font-family : tahoma, sans-serif;
 }
 
-.box1 {
-	border       : 1px solid #F00;
-	border-right : 13px solid green;
-	border-left  : 13px solid green;
-	width        : 100px;
-	height       : 100px;
+.clearfix {
+	clear : both;
 }
 
-.box2 {
-	border     : 3px solid teal;
-	background : #EEE;
-}
-
-.box3 {
-	border     : 2px solid orange;
-	background : yellow;
-}
-
-.box4 {
-	border      : 2px solid blue;
-	background  : url(images/background_25.JPG);
-	height      : 100px;
-	color       : #FFF;
-	font-size   : 80px;
-	font-weight : bold;
-}
-
-#div1, #div2, #div3, #div4, #div5, #div6 {
-  opacity: 0.7;
-  position: relative;
-  }
-h1 {
-  font: inherit;
-  font-weight: bold;
-  }
-
-#div-container {
+#zi {
+	height   : 200px;
 	position : relative;
 }
 
-#div1, #div2 {
-  border: 1px dashed #696;
-  padding: 10px;
-  background-color: #cfc;
-  }
-#div1 {
-  z-index: 5;
-  margin-bottom: 190px;
-  }
-#div2 {
-  z-index: 2;
-  }
-#div3 {
-  z-index: 4;
-  opacity: 1;
-  position: absolute;
-  top: 40px;
-  left: 180px;
-  width: 330px;
-  border: 1px dashed #900;
-  background-color: #fdd;
-  padding: 40px 20px 20px;
-  }
-#div4, #div5 {
-  border: 1px dotted #996;
-  background-color: #ffc;
-  }
-#div4 {
-  z-index: 6;
-  margin-bottom: 15px;
-  padding: 25px 10px 5px;
-  }
-#div5 {
-  z-index: 1;
-  margin-top: 15px;
-  padding: 5px 10px;
-  }
-#div6 {
-  z-index: 3;
-  position: absolute;
-  top: 20px;
-  left: 180px;
-  width: 150px;
-  height: 125px;
-  border: 1px dashed #009;
-  padding-top: 125px;
-  background-color: #ddf;
-  text-align: center;
-  }
+#zi div {
+	border     : 1px solid #000;
+	width      : 100px;
+	height     : 100px;
+	background : #CEE;
+}
+
+#zi-2 {
+	position : relative;
+	z-index  : 10;
+	left     : 80px;
+}
+
+#zi-3 {
+	position : absolute;
+	top      : 50px;
+	left     : 50px;
+	z-index  : 5;
+}
+
+#zi-4 {
+	position : absolute;
+	top      : 20px;
+	left     : 20px;
+	z-index  : 15;
+}
+
+#zi-5 {
+	position : absolute;
+	top      : 40px;
+	left     : 40px;
+	z-index  : 20;
+}
+
+.boxes div, .box {
+	width  : 100px;
+	height : 100px;
+	margin : 10px;
+}
+
+.boxes div {	
+	float  : left;
+}
+
+.boxes.large div {
+	width  : 250px;
+	height : 250px;
+}
+
+.border div {
+	background : #CEE;
+}
+
+#border-1 { border : 5px solid  #000; }
+#border-2 { border : 5px dotted #000; }
+#border-3 { border : 5px dashed #000; }
+#border-4 { border : 5px double #000; }
+#border-5 { border : 5px groove teal; }
+#border-6 { border : 5px ridge  teal; }
+#border-7 { border : 5px inset  teal; }
+#border-8 { border : 5px outset teal; }
 </style>
 </head>
 <body>
@@ -115,59 +93,230 @@ h1 {
 <script type="text/javascript" src="../source/canvas-prototype.js"         ></script>
 <script type="text/javascript" src="../source/overlay-ui.js"               ></script>
 
-	<div class="box1">
-		This is a test of the screenshot system.  This is only a test.
-	</div>
-	<br />
-	<div class="box2">
-		<img src="images/fish.png" width="300" height="100">
-		<img src="images/fish.png" width="100" height="100">
-		<div class="box3">
-			another box
+	<h1>Z-Index</h1>
+	<div id="zi">
+		<div id="zi-1">
+			box #1
+			<div id="zi-2">
+				box #2
+				<br />
+				z-index : 10
+			</div>
+		</div>
+		<div id="zi-3">
+			box #3
+			<br />
+			z-index : 5
+			<div id="zi-4">
+				box #4
+				<br />
+				z-index : 15
+			</div>
+			<div id="zi-5">
+				box #5
+				<br />
+				z-index : 20
+			</div>
 		</div>
 	</div>
+
 	<hr />
-	<div class="box4">repeating background</div>
-	<br />
 
-	<div id="div-container">
-	    <div id="div1">
-	      <h1>Division Element #1</h1>
-	      <code>position: relative;<br/>
-	      z-index: 5;</code>
-	    </div>
-
-	    <div id="div2">
-	      <h1>Division Element #2</h1>
-	      <code>position: relative;<br/>
-	      z-index: 2;</code>
-	    </div>
-
-	    <div id="div3">
-
-	      <div id="div4">
-	        <h1>Division Element #4</h1>
-	        <code>position: relative;<br/>
-	        z-index: 6;</code>
-	      </div>
-
-	      <h1>Division Element #3</h1>
-	      <code>position: absolute;<br/>
-	      	z-index: 4;</code>
-
-	      <div id="div5">
-	        <h1>Division Element #5</h1>
-	        <code>position: relative;<br/>
-	        	z-index: 1;</code>
-	      </div>
-   
-	      <div id="div6">
-	        <h1>Division Element #6</h1>
-	        <code>position: absolute;<br/>
-	        z-index: 3;</code>
-	      </div>
-
-	    </div>
+	<h1>Borders</h1>
+	<div class="border boxes">
+		<div style="border : 5px solid  teal;">Solid </div>
+		<div style="border : 5px dotted teal;">Dotted</div>
+		<div style="border : 5px dashed teal;">Dashed</div>
+		<div style="border : 5px double teal;">Double</div>
+		<div style="border : 5px groove teal;">Groove</div>
+		<div style="border : 5px ridge  teal;">Ridge </div>
+		<div style="border : 5px inset  teal;">Inset </div>
+		<div style="border : 5px outset teal;">Outset</div>
+		<div style="border : 5px solid  teal;border-width: 5px 10px 15px 20px; border-color: teal orange red blue">Solid </div>
 	</div>
+	<div class="clearfix"></div>
+
+	<h1>Outlines</h1>
+	<div class="border boxes">
+		<div style="outline : 5px solid  teal;">Solid </div>
+		<div style="outline : 5px dotted teal;">Dotted</div>
+		<div style="outline : 5px dashed teal;">Dashed</div>
+		<div style="outline : 5px double teal;">Double</div>
+		<div style="outline : 5px groove teal;">Groove</div>
+		<div style="outline : 5px ridge  teal;">Ridge </div>
+		<div style="outline : 5px inset  teal;">Inset </div>
+		<div style="outline : 5px outset teal;">Outset</div>
+		<div style="outline : 5px solid teal; outline-offset: 5px;">outline-offset: 5px;</div>
+	</div>
+	<div class="clearfix"></div>
+
+
+	<hr />
+
+	<h1>Text</h1>
+	<div style="font-style: italic"      >Italic    </div>
+	<div style="font-variant: small-caps">Small Caps</div>
+	<div style="font-weight: bold"       >Bold      </div>
+	<div style="font-weight: bolder"     >Bolder    </div>
+	<div style="font-weight: lighter"    >Lighter   </div>
+
+	<div style="word-spacing: 30px"      >word spacing = 30px</div>
+	<div style="word-spacing: 30pt"      >word spacing = 30pt</div>
+	<div style="word-spacing: 3cm"       >word spacing = 3cm </div>
+	<div style="word-spacing: 3em"       >word spacing = 3em </div>
+
+	<div style="letter-spacing: 3px"     >letter spacing = 3px </div>
+	<div style="letter-spacing: 3pt"     >letter spacing = 3pt </div>
+	<div style="letter-spacing: .3cm"    >letter spacing = .3cm</div>
+	<div style="letter-spacing: .3em"    >letter spacing = .3em</div>
+
+	<div style="text-indent : 30px;"     >text-indent : 30px</div>
+
+	<div style="text-align : right;"     >text-align : right</div>
+	<div style="text-align : center;"    >text-align : center</div>
+
+	<div style="text-decoration : underline;"   >text-decoration : underline   </div>
+	<div style="text-decoration : overline;"    >text-decoration : overline    </div>
+	<div style="text-decoration : line-through;">text-decoration : line-through</div>
+
+	<div style="text-transform : capitalize;">text-transform : capitalize</div>
+	<div style="text-transform : uppercase;" >text-transform : uppercase </div>
+	<div style="text-transform : lowercase;" >text-transform : lowercase </div>
+
+	<div class="boxes">
+		<div class="box" style="text-align : justify;"                             >text-align : justify -- more text to cause a wrap   </div>
+		<div class="box" style="text-align : justify;text-justify: inner-word"     >text-align : justify.  text-justify: inner-word     </div>
+		<div class="box" style="text-align : justify;text-justify: inter-ideograph">text-align : justify.  text-justify: inter-ideograph</div>
+		<div class="box" style="text-align : justify;text-justify: inter-cluster"  >text-align : justify.  text-justify: inter-cluster  </div>
+		<div class="box" style="text-align : justify;text-justify: distribute"     >text-align : justify.  text-justify: distribute     </div>
+		<div class="box" style="text-align : justify;text-justify: kashida"        >text-align : justify.  text-justify: kashida        </div>
+		<div class="box" style="text-align : justify;text-justify: trim"           >text-align : justify.  text-justify: trim           </div>
+	</div>
+	<div class="clearfix"></div>
+
+	<div style="width : 200px; white-space: nowrap; overflow: hidden; text-overflow: clip;"    >test-overflow : clip.      More text, la la la</div>
+	<div style="width : 200px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">test-overflow : ellipsis.  More text, la la la</div>
+	<div style="width : 200px; white-space: nowrap; overflow: hidden; text-overflow: 'end';"   >test-overflow : 'end'.     More text, la la la</div>
+
+	<h1>Opacity</h1>
+	<div class="box" style="background: #CEE; opacity : .75;">opacity: .75</div>
+	<div class="box" style="background: #ECE; opacity : .75; position: relative; top : -90px; left: 80px;" >opacity: .75</div>
+	<div class="box" style="background: #EEC; opacity : .75; position: relative; top : -140px; left: 20px;">opacity: .75</div>
+
+	<h1>RGBA</h1>
+	<div class="box" style="background: RGBA(0, 170, 170, .2);">RGBA(0, 170, 170, .2)</div>
+	<div class="box" style="background: RGBA(170, 0, 170, .2); position: relative; top : -90px; left: 80px;" >RGBA(170, 0, 170, .2)</div>
+	<div class="box" style="background: RGBA(170, 170, 0, .2); position: relative; top : -140px; left: 20px;">RGBA(170, 170, 0, .2)</div>
+
+	<h1>Images</h1>
+	<img src="images/fish.png" width="100">
+	<img src="images/fish.png" width="200">
+	<img src="images/fish.png" width="200" height="100" style="border:2px solid red;padding:20px;">
+
+	<h1>Backgrounds</h1>
+	<div class="large boxes">
+		<div style="background: teal;"></div>
+		<div style="background: url(images/background_25.jpg)"></div>
+		<div style="background: url(images/background_25.jpg);background-repeat: no-repeat">no-repeat</div>
+		<div style="background: url(images/background_25.jpg);background-repeat: repeat-x" >repeat-x </div>
+		<div style="background: url(images/background_25.jpg);background-repeat: repeat-y" >repeat-y </div>
+
+		<div style="background: url(images/background_25.jpg);background-size: 20px 20px">background-size: 20px 20px</div>
+		<div style="background: url(images/background_25.jpg);background-size: cover"    >background-size: cover    </div>
+		<div style="background: url(images/background_25.jpg);background-size: contain"  >background-size: contain  </div>
+
+		<div style="background: url(images/background_25.jpg);background-position: left top"    >left top   </div>
+		<div style="background: url(images/background_25.jpg);background-position: left center" >left center</div>
+		<div style="background: url(images/background_25.jpg);background-position: left bottom" >left bottom</div>
+
+		<div style="background: url(images/background_25.jpg);background-position: right top"    >right top   </div>
+		<div style="background: url(images/background_25.jpg);background-position: right center" >right center</div>
+		<div style="background: url(images/background_25.jpg);background-position: right bottom" >right bottom</div>
+
+		<div style="background: url(images/background_25.jpg);background-position: center top"    >center top   </div>
+		<div style="background: url(images/background_25.jpg);background-position: center center" >center center</div>
+		<div style="background: url(images/background_25.jpg);background-position: center bottom" >center bottom</div>
+
+		<div style="background: url(images/background_25.jpg);background-repeat: no-repeat;background-position: left top"    >left top   </div>
+		<div style="background: url(images/background_25.jpg);background-repeat: no-repeat;background-position: left center" >left center</div>
+		<div style="background: url(images/background_25.jpg);background-repeat: no-repeat;background-position: left bottom" >left bottom</div>
+
+		<div style="background: url(images/background_25.jpg);background-repeat: no-repeat;background-position: right top"    >right top   </div>
+		<div style="background: url(images/background_25.jpg);background-repeat: no-repeat;background-position: right center" >right center</div>
+		<div style="background: url(images/background_25.jpg);background-repeat: no-repeat;background-position: right bottom" >right bottom</div>
+
+		<div style="background: url(images/background_25.jpg);background-repeat: no-repeat;background-position: center top"    >center top   </div>
+		<div style="background: url(images/background_25.jpg);background-repeat: no-repeat;background-position: center center" >center center</div>
+		<div style="background: url(images/background_25.jpg);background-repeat: no-repeat;background-position: center bottom" >center bottom</div>
+
+		<div style="background: url(images/background_25.jpg);background-repeat: no-repeat;background-position: 17% 29%" >17% 29% </div>
+		<div style="background: url(images/background_25.jpg);background-repeat: no-repeat;background-position: 81% 33%" >81% 33% </div>
+		<div style="background: url(images/background_25.jpg);background-repeat: no-repeat;background-position: 105% -5%">105% -5%</div>
+	</div>
+	<div class="clearfix">
+
+	<h1>Lists</h1>
+	<h2>list-style-position: inside</h2>
+	<ul style="list-style-position: inside;">
+		<li style="list-style-type:armenian"            >list-style-type: armenian            </li>
+		<li style="list-style-type:circle"              >list-style-type: circle              </li>
+		<li style="list-style-type:cjk-ideographic"     >list-style-type: cjk-ideographic     </li>
+		<li style="list-style-type:decimal"             >list-style-type: decimal             </li>
+		<li style="list-style-type:decimal-leading-zero">list-style-type: decimal-leading-zero</li>
+		<li style="list-style-type:disc"                >list-style-type: disc                </li>
+		<li style="list-style-type:georgian"            >list-style-type: georgian            </li>
+		<li style="list-style-type:hebrew"              >list-style-type: hebrew              </li>
+		<li style="list-style-type:hiragana"            >list-style-type: hiragana            </li>
+		<li style="list-style-type:hiragana-iroha"      >list-style-type: hiragana-iroha      </li>
+		<li style="list-style-type:katakana"            >list-style-type: katakana            </li>
+		<li style="list-style-type:katakana-iroha"      >list-style-type: katakana-iroha      </li>
+		<li style="list-style-type:lower-alpha"         >list-style-type: lower-alpha         </li>
+		<li style="list-style-type:lower-greek"         >list-style-type: lower-greek         </li>
+		<li style="list-style-type:lower-latin"         >list-style-type: lower-latin         </li>
+		<li style="list-style-type:lower-roman"         >list-style-type: lower-roman         </li>
+		<li style="list-style-type:none"                >list-style-type: none                </li>
+		<li style="list-style-type:square"              >list-style-type: square              </li>
+		<li style="list-style-type:upper-alpha"         >list-style-type: upper-alpha         </li>
+		<li style="list-style-type:upper-latin"         >list-style-type: upper-latin         </li>
+		<li style="list-style-type:upper-roman"         >list-style-type: upper-roman         </li>
+	</ul>
+	
+	<h2>list-style-position: outside</h2>
+	<ul style="list-style-position: outside;">
+		<li style="list-style-type:armenian"            >list-style-type: armenian            </li>
+		<li style="list-style-type:circle"              >list-style-type: circle              </li>
+		<li style="list-style-type:cjk-ideographic"     >list-style-type: cjk-ideographic     </li>
+		<li style="list-style-type:decimal"             >list-style-type: decimal             </li>
+		<li style="list-style-type:decimal-leading-zero">list-style-type: decimal-leading-zero</li>
+		<li style="list-style-type:disc"                >list-style-type: disc                </li>
+		<li style="list-style-type:georgian"            >list-style-type: georgian            </li>
+		<li style="list-style-type:hebrew"              >list-style-type: hebrew              </li>
+		<li style="list-style-type:hiragana"            >list-style-type: hiragana            </li>
+		<li style="list-style-type:hiragana-iroha"      >list-style-type: hiragana-iroha      </li>
+		<li style="list-style-type:katakana"            >list-style-type: katakana            </li>
+		<li style="list-style-type:katakana-iroha"      >list-style-type: katakana-iroha      </li>
+		<li style="list-style-type:lower-alpha"         >list-style-type: lower-alpha         </li>
+		<li style="list-style-type:lower-greek"         >list-style-type: lower-greek         </li>
+		<li style="list-style-type:lower-latin"         >list-style-type: lower-latin         </li>
+		<li style="list-style-type:lower-roman"         >list-style-type: lower-roman         </li>
+		<li style="list-style-type:none"                >list-style-type: none                </li>
+		<li style="list-style-type:square"              >list-style-type: square              </li>
+		<li style="list-style-type:upper-alpha"         >list-style-type: upper-alpha         </li>
+		<li style="list-style-type:upper-latin"         >list-style-type: upper-latin         </li>
+		<li style="list-style-type:upper-roman"         >list-style-type: upper-roman         </li>
+	</ul>
+
+	<h1>Form Element</h1>
+	<input type="radio">
+	<input type="checkbox">
+	<select>
+		<option>Option #1</option>
+		<option>Option #2</option>
+		<option>Option #3</option>
+		<option>Option #4</option>
+	</select>
+	<input value="foo"></input>
+	<input type="password" value="foo"></input>
+			
 </body>
 </html>

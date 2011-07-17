@@ -30,8 +30,8 @@
 
 		bodySize        : function(){
 			return {
-				width  : $(document.body).width(),
-				height : $(document.body).height()
+				width  : $(document).width(),
+				height : $(document).height()
 			};
 		},
 

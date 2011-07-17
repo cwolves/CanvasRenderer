@@ -19,7 +19,7 @@ html2canvas.prototype.init.push(function( opts ){
 	this.viewport        = this.$.documentScroll();
 	this.viewport.right  = this.viewport.left + canvasSize.width;
 	this.viewport.bottom = this.viewport.top  + canvasSize.height;
-
+console.log(canvasSize);
 	this.canvas        = this.$.createElement( 'canvas ');
 	this.canvas.width  = canvasSize.width;
 	this.canvas.height = canvasSize.height;

@@ -20,7 +20,7 @@ html2canvas.prototype.analyzeFont = function( txt, rect ){
 
 	switch(transform){
 		case 'capitalize':
-			txt.nodeValue = txt.nodeValue.replace(/(\W)(\w)/g, function(m, space, letter){
+			txt.nodeValue = txt.nodeValue.replace(/(\W|^)(\w)/g, function(m, space, letter){
 				return space + letter.toUpperCase();
 			});
 			break;

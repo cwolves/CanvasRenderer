@@ -28,7 +28,7 @@ html2canvas.prototype.getElementsByZIndex = function( node, running ){
 	contexts.push(elems);
 	elems   .push(node);
 
-	for(var i=0, c=node.childNodes, l=c.length; i<l; i++){
+	for( var i=0, c=node.childNodes, l=c.length; i<l; i++ ){
 		elem          = node.childNodes[i];
 		zIndex        = this.$.zIndex( elem );
 		startsContext = this.nodeStartsStackingContext( elem, zIndex, opacity );
@@ -47,13 +47,13 @@ html2canvas.prototype.getElementsByZIndex = function( node, running ){
 	}
 
 	// stable sort in all browsers using original index
-	contexts.sort(function(a, b){
+	contexts.sort( function( a, b ){
 		return a.zIndex == b.zIndex
 			? b.index  - a.index
 			: a.zIndex - b.zIndex;
 	});
 
-	return contexts.concat.apply([], contexts);
+	return contexts.concat.apply( [], contexts );
 };
 
 html2canvas.prototype.nodeStartsStackingContext = function( node, zIndex, opacity ){
