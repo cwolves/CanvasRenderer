@@ -12,6 +12,8 @@
 			canvas = new html2canvas(
 				{ css : 'position: absolute; top: 0px; left: 0px; z-index: 10000' },
 				function(){
+					window.scrollTop = document.body.scrollTop = 0;
+
 					canvas
 						.render      ( document.body )
 						.appendToNode( document.body );
