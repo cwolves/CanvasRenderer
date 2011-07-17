@@ -1,0 +1,61 @@
+/* ::::: http://css3.zxq.net/doraemon/dora3.css ::::: */
+
+body { background: none repeat scroll 0% 0% rgb(255, 255, 255); }
+#doraemon { position: relative; margin: 50px; }
+#head_light { width: 50px; height: 50px; -moz-transform: rotate(20deg); box-shadow: 80px 20px 50px rgb(255, 255, 255); border-radius: 60px 60px 60px 60px; position: absolute; top: -20px; left: 170px; opacity: 0.5; }
+#face { position: relative; width: 310px; height: 300px; border-radius: 146px 146px 146px 146px; background: -moz-linear-gradient(right top , rgb(255, 255, 255), rgb(7, 190, 234) 20%, rgb(16, 166, 206) 73%, rgb(0, 0, 0) 95%, rgb(0, 0, 0) 155%) repeat scroll 0% 0% transparent; border: 2px solid rgb(51, 51, 51); top: -15px; box-shadow: -5px 10px 15px rgba(0, 0, 0, 0.45); }
+#base { position: relative; top: -5px; }
+#base_white { position: absolute; border: 2px solid rgb(0, 0, 0); width: 264px; height: 196px; border-radius: 150px 150px 150px 150px; background: -moz-linear-gradient(right top , rgb(255, 255, 255), rgb(255, 255, 255) 75%, rgb(238, 238, 238) 83%, rgb(153, 153, 153) 90%, rgb(68, 68, 68) 95%, rgb(0, 0, 0)) repeat scroll 0% 0% transparent; z-index: 1; top: 85px; left: 22px; }
+#eyes { position: relative; top: -5px; }
+div.eye { position: absolute; border-radius: 35px 35px 35px 35px; border: 2px solid rgb(0, 0, 0); width: 72px; height: 83px; z-index: 20; background: none repeat scroll 0% 0% rgb(255, 255, 255); }
+div.black_eye { position: absolute; width: 15px; height: 15px; border-radius: 10px 10px 10px 10px; background: none repeat scroll 0% 0% rgb(51, 51, 51); z-index: 21; }
+div.black_left { top: 100px; left: 130px; }
+div.black_right { top: 100px; left: 170px; }
+div.eye_left { top: 45px; left: 82px; }
+div.eye_right { top: 45px; left: 156px; }
+#nose { width: 32px; height: 32px; border: 2px solid rgb(0, 0, 0); border-radius: 50px 50px 50px 50px; background: none repeat scroll 0% 0% rgb(201, 62, 0); position: absolute; top: 117px; left: 139px; z-index: 30; }
+#nose_light { width: 10px; height: 10px; border-radius: 5px 5px 5px 5px; box-shadow: 19px 8px 5px rgb(255, 255, 255); position: relative; top: 0px; left: 0px; }
+#nose_line { background: none repeat scroll 0% 0% rgb(51, 51, 51); width: 3px; height: 100px; top: 140px; left: 155px; position: absolute; z-index: 20; }
+#mouth { width: 240px; height: 240px; border-bottom: 3px solid rgb(51, 51, 51); border-radius: 120px 120px 120px 120px; position: absolute; top: 0px; left: 35px; z-index: 50; clip: rect(205px, auto, auto, auto); }
+#mouth, x:-moz-broken, x:last-of-type, x:indeterminate { border: 3px solid rgb(51, 51, 51); top: -2px; }
+.whiskers { background: none repeat scroll 0% 0% rgb(51, 51, 51); height: 2px; width: 60px; position: absolute; z-index: 20; }
+.whi_right { top: 165px; left: 210px; }
+.whi_right_top { top: 145px; left: 210px; }
+.whi_right_bottom { top: 185px; left: 210px; }
+.whi_left { top: 165px; left: 50px; }
+.whi_left_top { top: 145px; left: 50px; }
+.whi_left_bottom { top: 185px; left: 50px; }
+.rotate20 { -moz-transform: rotate(20deg); }
+.rotate160 { -moz-transform: rotate(160deg); }
+#choker { position: relative; top: -55px; left: 35px; z-index: 100; }
+#belt { width: 230px; height: 20px; border: 2px solid rgb(0, 0, 0); background: -moz-linear-gradient(center top , rgb(202, 65, 0), rgb(128, 4, 0)) repeat scroll 0% 0% transparent; border-radius: 10px 10px 10px 10px; position: relative; left: 5px; }
+#bell { width: 40px; height: 40px; border-radius: 50px 50px 50px 50px; border: 2px solid rgb(0, 0, 0); background: -moz-linear-gradient(center top , rgb(249, 241, 42), rgb(233, 225, 26) 75%, rgb(169, 161, 0)) repeat scroll 0% 0% transparent; box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.25); position: relative; top: -15px; left: 100px; }
+#bell_line { width: 36px; height: 2px; background: none repeat scroll 0% 0% rgb(249, 241, 42); border: 2px solid rgb(51, 51, 51); position: relative; top: 10px; }
+#bell_circle { width: 12px; height: 10px; border-radius: 5px 5px 5px 5px; background: none repeat scroll 0% 0% rgb(0, 0, 0); position: relative; top: 14px; left: 14px; }
+#bell_under { width: 3px; height: 15px; background: none repeat scroll 0% 0% rgb(0, 0, 0); position: relative; top: 10px; left: 18px; }
+#bell_light { width: 10px; height: 10px; border-radius: 10px 10px 10px 10px; box-shadow: 19px 8px 5px rgb(255, 255, 255); position: relative; opacity: 0.7; top: -35px; left: 5px; }
+#doutai { position: absolute; width: 220px; height: 165px; background: -moz-linear-gradient(right center , rgb(7, 190, 234), rgb(0, 115, 179) 50%, rgb(0, 150, 190) 75%, rgb(0, 176, 224), rgb(0, 150, 190) 100%, rgb(51, 51, 51) 114%) repeat scroll 0% 0% transparent; border: 2px solid rgb(51, 51, 51); top: 262px; left: 46px; }
+div.base_white2 { position: absolute; width: 170px; height: 170px; border-radius: 85px 85px 85px 85px; border: 2px solid rgb(0, 0, 0); background: -moz-linear-gradient(right top , rgb(255, 255, 255), rgb(255, 255, 255) 75%, rgb(238, 238, 238) 83%, rgb(153, 153, 153) 90%, rgb(68, 68, 68) 95%, rgb(0, 0, 0)) repeat scroll 0% 0% transparent; }
+.doutai_center { top: 230px; left: 72px; }
+#circle { position: relative; width: 130px; height: 130px; border-radius: 65px 65px 65px 65px; background: -moz-linear-gradient(right top , rgb(255, 255, 255), rgb(255, 255, 255) 70%, rgb(248, 248, 248) 75%, rgb(238, 238, 238) 80%, rgb(221, 221, 221) 88%, rgb(255, 255, 255)) repeat scroll 0% 0% transparent; border: 2px solid rgb(0, 0, 0); top: -120px; left: 92px; }
+#circle_rewrite { position: relative; width: 134px; height: 60px; background: none repeat scroll 0% 0% rgb(255, 255, 255); border-bottom: 2px solid rgb(0, 0, 0); top: -250px; left: 92px; }
+#hand_right { position: absolute; top: 272px; left: 248px; width: 100px; height: 100px; }
+#arm_right { position: relative; width: 80px; height: 50px; background: -moz-linear-gradient(center top , rgb(7, 190, 234), rgb(7, 190, 234) 85%, rgb(85, 85, 85)) repeat scroll 0% 0% transparent; border: 1px solid rgb(0, 0, 0); z-index: -1; top: 17px; -moz-transform: rotate(35deg); box-shadow: -10px 7px 10px rgba(0, 0, 0, 0.35); }
+#hand_left { position: absolute; top: 272px; left: -46px; width: 100px; height: 100px; }
+#arm_left { position: relative; width: 80px; height: 50px; background: -moz-linear-gradient(left top , rgb(0, 150, 190), rgb(0, 150, 190) 55%, rgb(7, 190, 234)) repeat scroll 0% 0% transparent; border: 1px solid rgb(0, 0, 0); z-index: -1; top: 17px; left: 36px; -moz-transform: rotate(145deg); box-shadow: 5px -7px 10px rgba(0, 0, 0, 0.25); }
+div.hand_circle { position: absolute; width: 60px; height: 60px; border-radius: 30px 30px 30px 30px; border: 2px solid rgb(0, 0, 0); background: -moz-linear-gradient(right top , rgb(255, 255, 255), rgb(255, 255, 255) 50%, rgb(238, 238, 238) 70%, rgb(221, 221, 221) 80%, rgb(153, 153, 153)) repeat scroll 0% 0% transparent; }
+.hand_right { top: 32px; left: 40px; }
+.arm_rewrite_right { position: relative; width: 4px; height: 45px; background: none repeat scroll 0% 0% rgb(7, 190, 234); top: -51px; left: 18px; }
+.hand_left { top: 34px; left: 10px; }
+.arm_rewrite_left { position: relative; width: 4px; height: 50px; background: -moz-linear-gradient(left top , rgb(0, 150, 190), rgb(0, 150, 190)) repeat scroll 0% 0% transparent; top: -52px; left: 92px; }
+#foot { position: relative; width: 280px; height: 40px; top: -141px; left: 20px; }
+#foot_left { width: 125px; height: 30px; background: -moz-linear-gradient(right top , rgb(255, 255, 255), rgb(255, 255, 255) 75%, rgb(238, 238, 238) 85%, rgb(153, 153, 153)) repeat scroll 0% 0% transparent; border: 2px solid rgb(51, 51, 51); border-radius: 80px 60px 60px 40px; position: relative; left: 8px; top: 2px; box-shadow: -6px 0px 10px rgba(0, 0, 0, 0.35); z-index: -1; }
+#foot_right { position: relative; width: 125px; height: 30px; background: -moz-linear-gradient(right top , rgb(255, 255, 255), rgb(255, 255, 255) 75%, rgb(238, 238, 238) 85%, rgb(153, 153, 153)) repeat scroll 0% 0% transparent; border: 2px solid rgb(51, 51, 51); border-radius: 60px 80px 40px 60px; top: -32px; left: 141px; box-shadow: -6px 0px 10px rgba(0, 0, 0, 0.35); z-index: -1; }
+#foot_rewrite { position: relative; width: 20px; height: 10px; background: -moz-linear-gradient(right top , rgb(102, 102, 102), rgb(255, 255, 255) 83%, rgb(255, 255, 255)) repeat scroll 0% 0% transparent; top: -76px; left: 127px; border-top: 2px solid rgb(0, 0, 0); border-right: 2px solid rgb(0, 0, 0); border-left: 2px solid rgb(0, 0, 0); border-top-left-radius: 40px; border-top-right-radius: 40px; }
+#shadow_doutai_left { width: 30px; height: 200px; box-shadow: -10px 10px 15px rgba(0, 0, 0, 0.45); position: absolute; top: 250px; left: 46px; z-index: -10; }
+#shadow_doutai_right { width: 30px; height: 200px; box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.35); position: absolute; top: 240px; left: 230px; z-index: -10; }
+#shadow_doutai_arm { width: 85px; height: 165px; box-shadow: -100px 10px 15px rgba(0, 0, 0, 0.25); position: absolute; top: 230px; left: 113px; z-index: 10; opacity: 0.5; -moz-transform: rotate(-20deg); border-bottom-left-radius: 40px; border-top-left-radius: 20px; }
+#shadow_belt { width: 40px; height: 30px; box-shadow: -100px 10px 15px rgba(0, 0, 0, 0.25); position: absolute; top: 240px; left: 130px; border-bottom-left-radius: 40px; z-index: 300; }
+#arm_left, .arm_rewrite_left {  }
+#footer { width: 97%; padding: 0pt 0pt 0pt 30px; border-bottom: 1px solid rgb(51, 51, 51); margin: -150px 0pt 0pt; }
+#footer a, a:link { color: rgb(0, 153, 204); position: relative; }
