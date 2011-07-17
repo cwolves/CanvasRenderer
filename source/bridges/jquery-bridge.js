@@ -105,7 +105,7 @@ list-style-type list-style-image list-style-position opacity position z-index vi
 
 		bridge[ $.camelCase( name ) ] = function( n ){
 			// can't get CSS on text nodes
-			if( n.nodeType == 3 ){ return; }
+			if( 1 != n.nodeType ){ return; }
 
 			return $( n ).css( name );
 		};
