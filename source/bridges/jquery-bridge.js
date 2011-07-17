@@ -58,10 +58,15 @@
 			return offset;
 		},
 
-		// the point of this function is to accurately convert "3em", "30%", etc to px
-		//   for now, just convert to a # and assume everything is in px
-		unitsToPx : function( val, node ){
-			return parseInt( val );
+		unitsToPx : function( val, mult, mult2 ){
+			var percent = ~val.indexOf('%'),
+			        val = parseFloat( val );
+
+			if(percent){
+				val = (mult || 0) * val/100 - (mult2 || 0) * val/100;
+			}
+
+			return val;
 		},
 
 		addEvent : function( node, event, fn ){

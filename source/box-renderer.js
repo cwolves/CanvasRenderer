@@ -1,8 +1,8 @@
 html2canvas.prototype.drawBoundingBox = function( node, rect ){
-	var wTop = this.$.unitsToPx( this.$.borderTopWidth   ( node ), node ),
-	  wRight = this.$.unitsToPx( this.$.borderRightWidth ( node ), node ),
-	 wBottom = this.$.unitsToPx( this.$.borderBottomWidth( node ), node ),
-	   wLeft = this.$.unitsToPx( this.$.borderLeftWidth  ( node ), node ),
+	var wTop = this.$.unitsToPx( this.$.borderTopWidth   ( node ), rect.height ),
+	  wRight = this.$.unitsToPx( this.$.borderRightWidth ( node ), rect.width  ),
+	 wBottom = this.$.unitsToPx( this.$.borderBottomWidth( node ), rect.height ),
+	   wLeft = this.$.unitsToPx( this.$.borderLeftWidth  ( node ), rect.width  ),
 	     box = { top : wTop, right : wRight, bottom : wBottom, left : wLeft },
 	 bgColor = this.$.backgroundColor( node ),
 	 bgImage = this.$.backgroundImage( node );

@@ -1,23 +1,26 @@
 html2canvas.prototype.renderBackgroundImage = function( node, rect, box, imgPath ){
-	var bgRepeat = this.$.backgroundRepeat  ( node ),
-	  bgPosition = this.$.unitsToPx( this.$.backgroundPosition( node ) ),
-	     repeatX = (bgRepeat != 'no-repeat') && (bgRepeat != 'repeat-y'),
-	     repeatY = (bgRepeat != 'no-repeat') && (bgRepeat != 'repeat-x'),
-	       bgImg = this.getImage( imgPath ),
-	           x = 0,
-	           y = 0;
+	var bgImg = this.getImage( imgPath ),
+	        x = 0,
+	        y = 0;
 
 	if( !bgImg ){ return; } // image couldn't be loaded for some reason
-	var w = bgImg.width,
-	    h = bgImg.height;
+
+	var bgRepeat = this.$.backgroundRepeat  ( node ),
+	  bgPosition = this.$.backgroundPosition( node ).split(' '),
+	     repeatX = (bgRepeat != 'no-repeat') && (bgRepeat != 'repeat-y'),
+	     repeatY = (bgRepeat != 'no-repeat') && (bgRepeat != 'repeat-x'),
+               w = bgImg.width,
+               h = bgImg.height;
+	 bgPositionX = this.$.unitsToPx( bgPosition[0], rect.width , w ),
+	 bgPositionY = this.$.unitsToPx( bgPosition[1], rect.height, h );
 
 	while( x < rect.width ){
 		while( y < rect.height ){
 			this.renderImage(
 				bgImg,
 				{
-					top    : y + rect.top  + box.top,
-					left   : x + rect.left + box.left,
+					top    : y + rect.top  + box.top  + bgPositionY,
+					left   : x + rect.left + box.left + bgPositionX,
 					width  : w,
 					height : h 
 				}, {
