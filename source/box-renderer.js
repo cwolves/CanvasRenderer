@@ -11,10 +11,10 @@ html2canvas.prototype.drawBoundingBox = function( node, rect ){
 	this.setOpacity( node.opacity );
 
 	// draw borders
-	if( wTop    ){ this.drawLine( rect.left               , rect.top + wTop / 2      , rect.right             , rect.top + wTop / 2      , wTop   , this.$.borderTopColor   ( node ) ); }
-	if( wBottom ){ this.drawLine( rect.left               , rect.bottom - wBottom / 2, rect.right             , rect.bottom - wBottom / 2, wBottom, this.$.borderBottomColor( node ) ); }
-	if( wLeft   ){ this.drawLine( rect.left + wLeft / 2   , rect.top                 , rect.left + wLeft / 2  , rect.bottom              , wLeft  , this.$.borderLeftColor  ( node ) ); }
-	if( wRight  ){ this.drawLine( rect.right - wRight / 2 , rect.top                 , rect.right - wRight / 2, rect.bottom              , wRight , this.$.borderRightColor ( node ) ); }
+	if( wTop    ){ this.drawLine( rect.left               , rect.top + wTop / 2      , rect.right             , rect.top + wTop / 2      , wTop   , this.$.borderTopColor   ( node ), this.$.borderTopStyle   ( node ) ); }
+	if( wBottom ){ this.drawLine( rect.left               , rect.bottom - wBottom / 2, rect.right             , rect.bottom - wBottom / 2, wBottom, this.$.borderBottomColor( node ), this.$.borderBottomStyle( node ) ); }
+	if( wLeft   ){ this.drawLine( rect.left + wLeft / 2   , rect.top                 , rect.left + wLeft / 2  , rect.bottom              , wLeft  , this.$.borderLeftColor  ( node ), this.$.borderLeftStyle  ( node ) ); }
+	if( wRight  ){ this.drawLine( rect.right - wRight / 2 , rect.top                 , rect.right - wRight / 2, rect.bottom              , wRight , this.$.borderRightColor ( node ), this.$.borderRightStyle ( node ) ); }
 
 	// draw background color
 	this.drawFilledRect( rect.left + wLeft, rect.top + wTop, rect.width - wLeft - wRight, rect.height - wTop - wBottom, bgColor );
@@ -26,13 +26,24 @@ html2canvas.prototype.drawBoundingBox = function( node, rect ){
 	return box;
 }
 
-html2canvas.prototype.drawLine = function( x1, y1, x2, y2, width, color ){
+html2canvas.prototype.drawLine = function( x1, y1, x2, y2, width, color, style ){
 	this.setStrokeColor( color )
 	    .setLineWidth  ( width );
 
 	this.ctx.beginPath();
-	this.ctx.moveTo( x1, y1 );
-	this.ctx.lineTo( x2, y2 );
+
+	switch(style){
+		case 'dashed':
+			this.ctx.dashedLineTo( x1, y1, x2, y2, [3, 3] );
+			break;
+		case 'dotted':
+			this.ctx.dashedLineTo( x1, y1, x2, y2, [1, 1] );
+			break;
+		default:
+			this.ctx.moveTo( x1, y1 );
+			this.ctx.lineTo( x2, y2 );
+			break;
+	}
 	this.ctx.stroke();
 }
 

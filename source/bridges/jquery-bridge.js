@@ -83,6 +83,7 @@
 padding-top padding-right padding-bottom padding-left \
 border-top-width border-right-width border-bottom-width border-left-width \
 border-top-color border-right-color border-bottom-color border-left-color \
+border-top-style border-right-style border-bottom-style border-left-style \
 background-color background-repeat background-attachment background-position \
 font-family font-style font-variant font-weight font-size color \
 word-spacing letter-spacing text-decoration vertical-align text-transform text-align text-indent line-height white-space \
