@@ -11,7 +11,8 @@ html2canvas.prototype.init.push(function( opts ){
 		left   : 0
 	}, opts || {});
 
-	var canvasSize     = this.$.windowSize();
+	var canvasSize     = this.$.bodySize();
+
 	canvasSize.height -= ( opts.top + opts.bottom );
 	canvasSize.width  -= ( opts.left + opts.right );
 
@@ -24,6 +25,10 @@ html2canvas.prototype.init.push(function( opts ){
 	this.canvas.height = canvasSize.height;
 
 	this.ctx = this.canvas.getContext('2d');
+
+	// pre-fill the canvas with white
+	this.ctx.fillStyle = '#FFF';
+	this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 
 	opts.css && ( this.canvas.style.cssText = opts.css );
 

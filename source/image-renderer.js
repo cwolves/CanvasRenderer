@@ -12,9 +12,11 @@ html2canvas.prototype.renderImage = function( img, rect, constrain ){
 	    sW = img.width  * ( dW / rect.width  ),
 	    sH = img.height * ( dH / rect.height );
 
-	this.ctx.drawImage(
-		img,
-		sX, sY, sW, sH,
-		dX, dY, dW, dH
-	);
+	try{
+		this.ctx.drawImage(
+			img,
+			sX, sY, sW, sH,
+			dX, dY, dW, dH
+		);
+	}catch(err){}
 };
