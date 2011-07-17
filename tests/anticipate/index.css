@@ -1,0 +1,54 @@
+/* ::::: http://elegantthemes.com/preview/Anticipate/wp-content/plugins/anticipate-maintenance-plugin/css/style.css ::::: */
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend { margin: 0pt; padding: 0pt; border: 0pt none; outline: 0pt none; font-size: 100%; vertical-align: baseline; background: none repeat scroll 0% 0% transparent; }
+body { line-height: 1; }
+:focus { outline: 0pt none; }
+body { line-height: 18px; font-family: Helvetica,Arial,sans-serif; font-size: 14px; color: rgb(60, 60, 60); background: url('main-bg.png') repeat scroll 0% 0% transparent; }
+a { text-decoration: none; color: rgb(0, 183, 243); }
+a:hover { text-decoration: underline; }
+h1, h2, h3, h4, h5, h6 { padding-bottom: 5px; color: rgb(128, 128, 128); letter-spacing: -1px; line-height: 1em; font-weight: normal; }
+h2 { font-size: 24px; }
+p { padding-bottom: 10px; line-height: 18px; }
+strong { font-weight: bold; color: rgb(28, 28, 28); }
+input[type="text"], input.text, input.title, textarea, select { background-color: rgb(255, 255, 255); border: 1px solid rgb(187, 187, 187); padding: 2px; color: rgb(78, 78, 78); }
+input[type="text"]:focus, input.text:focus, input.title:focus, textarea:focus, select:focus { border-color: rgb(45, 57, 64); color: rgb(62, 62, 62); }
+input[type="text"], input.text, input.title, textarea, select { margin: 0.5em 0pt; }
+.clearfix:after { visibility: hidden; display: block; font-size: 0pt; content: " "; clear: both; height: 0pt; }
+:first-child + html .clearfix {  }
+#anticipate-top-shadow { background: url('top-shadow.png') repeat-x scroll 0% 0% transparent; margin-top: 1px; }
+#anticipate-center-highlight { background: url('center-highlight2.png') no-repeat scroll center top transparent; height: 802px; }
+#anticipate-container { text-align: left; margin: 0pt auto; width: 778px; position: relative; padding-top: 5%; }
+#anticipate-header { text-align: center; }
+#logo { margin-bottom: 25px; }
+#anticipate-timer { display: block; margin-bottom: 27px; }
+span.timer { font-size: 27px; color: rgb(207, 207, 207); text-shadow: 1px 1px 1px rgb(255, 255, 255); padding-right: 16px; }
+span.timer strong { font-weight: bold; color: rgb(186, 186, 186); }
+span.timer { font-family: Georgia,serif; text-transform: lowercase; }
+span.timer strong { font-family: Helvetica,Arial,sans-serif; }
+#anticipate-slider { background: url('slider-content.jpg') repeat-y scroll 0% 0% transparent; position: relative; width: 778px; margin-bottom: 12px; }
+#anticipate-slider-top { background: url('slider-top.jpg') no-repeat scroll 0% 0% transparent; position: relative; width: 778px; padding-top: 30px; }
+a#anticipate-left-arrow, a#anticipate-right-arrow { display: block; height: 61px; position: absolute; text-indent: -9999px; top: 38%; width: 27px; z-index: 300; }
+a#anticipate-left-arrow { left: 0px; background: url('left-arrow.jpg') no-repeat scroll 0% 0% transparent; }
+a#anticipate-right-arrow { right: 0px; background: url('right-arrow.jpg') no-repeat scroll 0% 0% transparent; }
+#anticipate-slider-content { width: 778px; background: url('slider-bottom.jpg') no-repeat scroll left bottom transparent; }
+.anticipate-slide { padding-left: 100px; padding-right: 100px; width: 585px; padding-bottom: 15px ! important; }
+.anticipate-quote { background: url('quote-top.png') no-repeat scroll left top transparent; margin-left: -50px; padding-left: 50px; }
+.anticipate-quote-bottom { background: url('quote-bottom.png') no-repeat scroll right 92% transparent; margin-right: -40px; padding-right: 40px; }
+h2 { font-size: 35px; color: rgb(0, 140, 227); }
+#anticipate-progress-bar { position: relative; height: 62px; padding-left: 8px; padding-top: 9px; background: url('black-bg.png') no-repeat scroll 7px 9px transparent; width: 715px; margin: 0pt 0pt 24px 23px; }
+#anticipate-bar { background: url('blue-bg.png') no-repeat scroll 0% 0% transparent; height: 44px; width: 0px; }
+#anticipate-overlay { position: absolute; top: 0px; left: 0px; background: url('progress-bar.png') no-repeat scroll 0% 0% transparent; width: 729px; height: 71px; }
+#anticipate-piece { position: absolute; top: 10px; left: 0px; background: url('percent-bar-torn-piece.png') no-repeat scroll 0% 0% transparent; width: 17px; height: 44px; display: none; }
+#percent_text { color: rgba(255, 255, 255, 0.78); font-family: Helvetica,Arial,sans-serif; font-size: 34px; left: 25px; position: absolute; text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2); top: 22px; display: none; }
+#anticipate-social-icons { float: left; margin-left: 46px; }
+#anticipate-social-icons a { margin-right: 16px; }
+#anticipate-subscribe { float: right; }
+#searchform { float: right; background: url('search-bg.png') no-repeat scroll 0% 0% transparent; height: 32px; }
+#searchform #searchinput { background: none repeat scroll 0% 0% transparent; border: medium none; padding-top: 0px; width: 187px; padding-left: 14px; font-size: 12px; font-family: Arial,Verdana,sans-serif; color: rgb(95, 95, 95); text-shadow: 1px 1px 1px rgb(255, 255, 255); font-style: italic; float: left; margin-top: 7px; }
+#searchform #searchsubmit { margin-right: 30px; margin-left: 34px; background: url('search_btn.png') no-repeat scroll 0% 0% transparent; width: 80px; height: 35px; display: block; float: right; padding-left: 6px; padding-bottom: 3px; text-transform: uppercase; font-size: 14px; color: rgb(255, 255, 255); border: medium none ! important; text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3); letter-spacing: -1px; font-weight: bold; }
+cufon { text-indent: 0pt ! important; }
+@media screen, projection {
+	cufon { display: inline-block ! important; position: relative ! important; vertical-align: middle ! important; font-size: 1px ! important; line-height: 1px ! important; }
+	cufon cufontext { display: inline-block ! important; width: 0pt ! important; height: 0pt ! important; overflow: hidden ! important; text-indent: -10000in ! important; }
+	cufon canvas { position: relative ! important; }
+}
