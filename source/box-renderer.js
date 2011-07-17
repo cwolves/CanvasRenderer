@@ -10,14 +10,14 @@ html2canvas.prototype.drawBoundingBox = function( node, rect ){
 	// set global opacity
 	this.setOpacity( node.opacity );
 
+	// draw background color
+	this.drawFilledRect( rect.left, rect.top, rect.width, rect.height, bgColor );
+
 	// draw borders
 	if( wTop    ){ this.drawLine( rect.left               , rect.top + wTop / 2      , rect.right             , rect.top + wTop / 2      , wTop   , this.$.borderTopColor   ( node ), this.$.borderTopStyle   ( node ) ); }
 	if( wBottom ){ this.drawLine( rect.left               , rect.bottom - wBottom / 2, rect.right             , rect.bottom - wBottom / 2, wBottom, this.$.borderBottomColor( node ), this.$.borderBottomStyle( node ) ); }
 	if( wLeft   ){ this.drawLine( rect.left + wLeft / 2   , rect.top                 , rect.left + wLeft / 2  , rect.bottom              , wLeft  , this.$.borderLeftColor  ( node ), this.$.borderLeftStyle  ( node ) ); }
 	if( wRight  ){ this.drawLine( rect.right - wRight / 2 , rect.top                 , rect.right - wRight / 2, rect.bottom              , wRight , this.$.borderRightColor ( node ), this.$.borderRightStyle ( node ) ); }
-
-	// draw background color
-	this.drawFilledRect( rect.left + wLeft, rect.top + wTop, rect.width - wLeft - wRight, rect.height - wTop - wBottom, bgColor );
 
 	if(bgImage){
 		this.renderBackgroundImage( node, rect, box, bgImage );
