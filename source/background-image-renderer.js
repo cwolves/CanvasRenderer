@@ -11,8 +11,8 @@ html2canvas.prototype.renderBackgroundImage = function( node, rect, box, imgPath
 	     repeatY = (bgRepeat != 'no-repeat') && (bgRepeat != 'repeat-x'),
                w = bgImg.width,
                h = bgImg.height;
-	 bgPositionX = this.$.unitsToPx( bgPosition[0], rect.width , w ),
-	 bgPositionY = this.$.unitsToPx( bgPosition[1], rect.height, h );
+	 bgPositionX = this.$.unitsToPx( bgPosition[0], rect.width , repeatX ? rect.width  : w ),
+	 bgPositionY = this.$.unitsToPx( bgPosition[1], rect.height, repeatY ? rect.height : h );
 
 	while( x < rect.width ){
 		while( y < rect.height ){
