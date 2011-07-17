@@ -73,9 +73,8 @@
 		},
 
 		isVisible : function( node ){
-			var $node = $( node );
-			return ($node.css('display') != 'none') &&
-				($node.css('visibility') != 'hidden');
+			return (bridge.display( node ) != 'none') &&
+				(bridge.visibility( node ) != 'hidden');
 		}
 	};
 
@@ -100,7 +99,7 @@ border-top-style border-right-style border-bottom-style border-left-style \
 background-color background-repeat background-attachment background-position \
 font-family font-style font-variant font-weight font-size color \
 word-spacing letter-spacing text-decoration vertical-align text-transform text-align text-indent line-height white-space \
-list-style-type list-style-image list-style-position opacity position z-index'
+list-style-type list-style-image list-style-position opacity position z-index visibility display'
 	.split(' '), function( i, name ){
 		if( !name ){ return; }
 
