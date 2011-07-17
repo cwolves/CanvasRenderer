@@ -6,6 +6,9 @@ html2canvas.prototype.getElementsByZIndex = function( node, running ){
 		running = {}; // running properties that can't be pulled from CSS directly
 	}
 
+	var visible = this.$.isVisible( node );
+	if(!visible){ return []; }
+
 	// running values need to go here
 	var opacity = this.$.opacity( node );
 	    opacity = parseFloat( opacity == null ? 1 : opacity ) * ( running.opacity == null ? 1 : running.opacity );

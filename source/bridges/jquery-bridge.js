@@ -28,6 +28,13 @@
 			};
 		},
 
+		bodySize        : function(){
+			return {
+				width  : $(document.body).width(),
+				height : $(document.body).height()
+			};
+		},
+
 		documentScroll  : function(){
 			var $body = $(document.body);
 
@@ -63,6 +70,12 @@
 
 		textContent : function( node ){
 			return node.nodeValue || node.innerText;
+		},
+
+		isVisible : function( node ){
+			var $node = $( node );
+			return ($node.css('display') != 'none') &&
+				($node.css('visibility') != 'hidden');
 		}
 	};
 
