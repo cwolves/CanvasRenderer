@@ -34,10 +34,10 @@ html2canvas.prototype.drawLine = function( x1, y1, x2, y2, width, color, style )
 
 	switch(style){
 		case 'dashed':
-			this.ctx.dashedLineTo( x1, y1, x2, y2, [3, 3] );
+			this.ctx.dashedLineTo( x1, y1, x2, y2, [3*width, 3*width] );
 			break;
 		case 'dotted':
-			this.ctx.dashedLineTo( x1, y1, x2, y2, [1, 1] );
+			this.ctx.dashedLineTo( x1, y1, x2, y2, [width, width] );
 			break;
 		default:
 			this.ctx.moveTo( x1, y1 );
