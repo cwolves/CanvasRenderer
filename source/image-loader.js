@@ -40,7 +40,7 @@ html2canvas.prototype.addImage = function( path, cb ){
 	img.width && setTimeout(img.onload, 1);
 
 	imgs[ path ] = imgObj;
-},
+};
 
 html2canvas.prototype.init.push(function( opts ){
 	var   imgs = this.$.getElements( 'img' ),
