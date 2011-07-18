@@ -1,5 +1,5 @@
 (function( $ ){
-	var _console = window.html2canvas.console = {};
+	var _console = html2canvas.prototype.console = {};
 
 	var methods = 'log trace'.split(' ');
 	for(var i=0, l=methods.length; i<l; i++){

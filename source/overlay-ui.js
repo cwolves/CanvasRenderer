@@ -9,9 +9,12 @@
 
 	$.addEvent( document.body, 'click', function(){
 		if( !canvas ){
+			var start = +new Date();
 			canvas = new html2canvas(
 				{ css : 'position: absolute; top: 0px; left: 0px; z-index: 10000' },
 				function(){
+					var start2 = +new Date();
+
 					window.scrollTop = document.body.scrollTop = 0;
 
 					canvas
@@ -24,6 +27,9 @@
 
 					toggleText();
 					loaded = true;
+
+					var end = +new Date();
+					this.console.log('Loading Time: ' + (start2-start) + '; Render Time: ' + (end - start2));
 				}
 			);
 		}
