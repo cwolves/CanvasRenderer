@@ -5,10 +5,12 @@ The purpose of this script is to allow "screenshots" to be taken of any page.  T
 
 ### Browser Compatibility
 This script should work fine in the following browsers:
+
 * Firefox 3+
 * Google Chrome
 
 Support is planned for the following:
+
 * IE 7+ (IE < 9 support via flashCanvas)
 * Opera
 
