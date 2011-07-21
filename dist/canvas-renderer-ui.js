@@ -640,3 +640,4 @@ CanvasRenderingContext2D.prototype.dashedLineTo = function (fromX, fromY, toX, t
 		dash = !dash;
 	}
 };
+// Creates a // UI to select parts of the page to highlight
