@@ -1,1 +1,1 @@
-(function(){var a="http://canvasrenderer.clientsite.me/dist/canvas-renderer-test-",b=document.createElement("SCRIPT");b.src=jQuery?a+"min.js":a+"jquery-min.js",b.type="text/javascript",document.getElementsByTagName("HEAD")[0].appendChild(b)})()
+(function(){var a="http://canvasrenderer.clientsite.me/dist/canvas-renderer-test-",b=document.createElement("SCRIPT");b.src=window.jQuery?a+"min.js":a+"jquery-min.js",b.type="text/javascript",document.getElementsByTagName("HEAD")[0].appendChild(b)})()
