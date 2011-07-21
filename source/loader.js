@@ -1,5 +1,5 @@
 (function(){
-	var base = 'http://canvasrenderer.clientsite.me/dist/canvas-renderer-test-',
+	var base = 'http://canvasrenderer.clientsite.me/dist/canvas-renderer-ui-',
 	     scr = document.createElement('SCRIPT');
 
 	scr.src = window.jQuery
