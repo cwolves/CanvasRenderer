@@ -99,30 +99,4 @@
 				return $( n )[ name ]();
 			};
 		});
-
-	// CSS Properties
-	jQuery.each(
-'margin-top margin-right margin-bottom margin-left \
-padding-top padding-right padding-bottom padding-left \
-border-top-width border-right-width border-bottom-width border-left-width \
-border-top-color border-right-color border-bottom-color border-left-color \
-border-top-style border-right-style border-bottom-style border-left-style \
-outline-top-width outline-right-width outline-bottom-width outline-left-width \
-outline-top-color outline-right-color outline-bottom-color outline-left-color \
-outline-top-style outline-right-style outline-bottom-style outline-left-style \
-background-color background-repeat background-attachment background-position background-size \
-font-family font-style font-variant font-weight font-size color \
-word-spacing letter-spacing text-decoration vertical-align text-transform text-align text-indent line-height white-space \
-list-style-type list-style-image list-style-position opacity position z-index visibility display'
-	.split(' '), function( i, name ){
-		if( !name ){ return; }
-
-		bridge[ $.camelCase( name ) ] = function( n ){
-			// can't get CSS on text nodes
-			if( 1 != n.nodeType ){ return; }
-
-			return $( n ).css( name );
-		};
-	});
-
 })( jQuery );
