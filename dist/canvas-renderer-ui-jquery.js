@@ -3,7 +3,7 @@
  *
  * Copyright 2011, Mark Kahn
  *
- * Date: Thu Jul 21 15:13:04 2011 -0700
+ * Date: Thu Jul 21 17:42:36 2011 -0700
  */
 /*!
  * jQuery JavaScript Library v1.6.2
@@ -8990,7 +8990,7 @@ window.jQuery = window.$ = jQuery;
  *
  * Copyright 2011, Mark Kahn
  *
- * Date: Thu Jul 21 15:13:04 2011 -0700
+ * Date: Thu Jul 21 17:42:36 2011 -0700
  */
 function html2canvas( opts, loadCB ){
 	this.$       = html2canvas.bridge;
@@ -9152,11 +9152,20 @@ list-style-type list-style-image list-style-position opacity position z-index vi
 var imgs = {},
      cbs = [];
 
+html2canvas.prototype.sameOrigin = function( src ){
+	var a = this.$.createElement('a');
+	a.href = src;
+
+	return (a.host === location.host) && (a.protocol === location.protocol);
+};
+
 html2canvas.prototype.getImage = function( path ){
 	return imgs[ path ] && imgs[ path ].img;
 };
 
 html2canvas.prototype.addImage = function( path, cb ){
+	if( !this.sameOrigin( path ) ){ return; }
+
 	if( imgs[ path ] ){
 		if( imgs[ path ].loaded ){
 			cb();
@@ -9170,11 +9179,11 @@ html2canvas.prototype.addImage = function( path, cb ){
 	var img = new Image(),
 	    cbs = [ cb ],
 
-	 imgObj = {
+	imgObj = {
 		img    : img,
 		cbs    : cbs,
 		loaded : false
-	 };
+	};
 
 	img.onload = function(){
 		this.loaded = true;
@@ -9213,6 +9222,7 @@ html2canvas.prototype.init.push(function( opts ){
 	for(var i=0, l=allNodes.length; i<l; i++){
 		var bgImage = this.$.backgroundImage( allNodes[i] );
 		if(!bgImage || ( bgImage == 'none' )){ continue; }
+		console.log(bgImage);
 
 		ctr++;
 		this.addImage( bgImage, done );

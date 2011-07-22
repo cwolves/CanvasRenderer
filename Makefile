@@ -33,6 +33,8 @@ JQUERY_UI_FILES = ${SRC_DIR}/intro.js\
 	${EXT_DIR}/jquery.js\
 	${UI_FILES}
 
+LOADER_FILES = ${SRC_DIR}/loader.js
+
 CR               = ${DIST_DIR}/canvas-renderer.js
 CR_MIN           = ${DIST_DIR}/canvas-renderer-min.js
 
@@ -45,11 +47,14 @@ CR_UI_MIN        = ${DIST_DIR}/canvas-renderer-ui-min.js
 CR_JQUERY_UI     = ${DIST_DIR}/canvas-renderer-ui-jquery.js
 CR_JQUERY_UI_MIN = ${DIST_DIR}/canvas-renderer-ui-jquery-min.js
 
+CR_LOADER        = ${DIST_DIR}/loader.js
+CR_LOADER_MIN    = ${DIST_DIR}/loader-min.js
+
 CR_VER = $(shell cat version.txt)
 DATE   = $(shell git log -1 --pretty=format:%ad)
 
 
-all: ${CR} ${CR_MIN} ${CR_TEST} ${CR_TEST_MIN} ${CR_UI} ${CR_UI_MIN} ${CR_JQUERY_UI} ${CR_JQUERY_UI_MIN}
+all: ${CR} ${CR_MIN} ${CR_TEST} ${CR_TEST_MIN} ${CR_UI} ${CR_UI_MIN} ${CR_JQUERY_UI} ${CR_JQUERY_UI_MIN} ${CR_LOADER} ${CR_LOADER_MIN}
 
 core: canvas_renderer
 
@@ -90,6 +95,14 @@ ${CR_JQUERY_UI}: ${BASE_FILES} | ${DIST_DIR}
 		sed 's/@VERSION/'"${CR_VER}"'/' \
 		> ${CR_JQUERY_UI};
 
+${CR_LOADER}: ${LOADER_FILES} | ${DIST_DIR}
+	@@echo "Building" ${CR_LOADER}
+
+	@@cat ${LOADER_FILES} |             \
+		sed 's/@DATE/'"${DATE}"'/' |    \
+		sed 's/@VERSION/'"${CR_VER}"'/' \
+		> ${CR_LOADER};
+
 ${CR_MIN}: ${CR}
 	@@if test ! -z ${JS_ENGINE}; then                                     \
 		echo "Minifying" ${CR_MIN};                                       \
@@ -118,6 +131,14 @@ ${CR_JQUERY_UI_MIN}: ${CR}
 	@@if test ! -z ${JS_ENGINE}; then                                     \
 		echo "Minifying" ${CR_JQUERY_UI_MIN};                             \
 		${COMPILER} ${CR_JQUERY_UI} > ${CR_JQUERY_UI_MIN};                \
+	else                                                                  \
+		echo "You must have NodeJS installed in order to minify jQuery."; \
+	fi
+
+${CR_LOADER_MIN}: ${CR_LOADER}
+	@@if test ! -z ${JS_ENGINE}; then                                     \
+		echo "Minifying" ${CR_LOADER_MIN};                                \
+		${COMPILER} ${CR_LOADER} > ${CR_LOADER_MIN};                      \
 	else                                                                  \
 		echo "You must have NodeJS installed in order to minify jQuery."; \
 	fi
