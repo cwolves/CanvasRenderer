@@ -1,11 +1,11 @@
 html2canvas.prototype.drawBoundingBox = function( node, rect ){
-	var wTop = this.$.unitsToPx( this.$.borderTopWidth   ( node ), rect.height ),
-	  wRight = this.$.unitsToPx( this.$.borderRightWidth ( node ), rect.width  ),
-	 wBottom = this.$.unitsToPx( this.$.borderBottomWidth( node ), rect.height ),
-	   wLeft = this.$.unitsToPx( this.$.borderLeftWidth  ( node ), rect.width  ),
+	var wTop = this.$.unitsToPx( this.$.css('border-top-width')   ( node ), rect.height ),
+	  wRight = this.$.unitsToPx( this.$.css('border-right-width') ( node ), rect.width  ),
+	 wBottom = this.$.unitsToPx( this.$.css('border-bottom-width')( node ), rect.height ),
+	   wLeft = this.$.unitsToPx( this.$.css('border-left-width')  ( node ), rect.width  ),
 	     box = { top : wTop, right : wRight, bottom : wBottom, left : wLeft },
-	 bgColor = this.$.backgroundColor( node ),
-	 bgImage = this.$.backgroundImage( node );
+	 bgColor = this.$.css('background-color')( node ),
+	 bgImage = this.$.css('background-image')( node );
 
 	// set global opacity
 	this.setOpacity( node.opacity );
@@ -14,10 +14,50 @@ html2canvas.prototype.drawBoundingBox = function( node, rect ){
 	this.drawFilledRect( rect.left, rect.top, rect.width, rect.height, bgColor );
 
 	// draw borders
-	if( wTop    ){ this.drawLine( rect.left               , rect.top + wTop / 2      , rect.right             , rect.top + wTop / 2      , wTop   , this.$.borderTopColor   ( node ), this.$.borderTopStyle   ( node ) ); }
-	if( wBottom ){ this.drawLine( rect.left               , rect.bottom - wBottom / 2, rect.right             , rect.bottom - wBottom / 2, wBottom, this.$.borderBottomColor( node ), this.$.borderBottomStyle( node ) ); }
-	if( wLeft   ){ this.drawLine( rect.left + wLeft / 2   , rect.top                 , rect.left + wLeft / 2  , rect.bottom              , wLeft  , this.$.borderLeftColor  ( node ), this.$.borderLeftStyle  ( node ) ); }
-	if( wRight  ){ this.drawLine( rect.right - wRight / 2 , rect.top                 , rect.right - wRight / 2, rect.bottom              , wRight , this.$.borderRightColor ( node ), this.$.borderRightStyle ( node ) ); }
+	if( wTop ){
+		this.drawLine(
+			rect.left,
+			rect.top + wTop / 2,
+			rect.right,
+			rect.top + wTop / 2,
+			wTop,
+			this.$.css('border-top-color')( node ),
+			this.$.css('border-top-style')( node )
+		);
+	}
+	if( wBottom ){
+		this.drawLine(
+			rect.left,
+			rect.bottom - wBottom / 2,
+			rect.right,
+			rect.bottom - wBottom / 2,
+			wBottom,
+			this.$.css('border-bottom-color')( node ),
+			this.$.css('border-bottom-style')( node )
+		);
+	}
+	if( wLeft ){
+		this.drawLine(
+			rect.left + wLeft / 2,
+			rect.top,
+			rect.left + wLeft / 2,
+			rect.bottom,
+			wLeft,
+			this.$.css('border-left-color')( node ),
+			this.$.css('border-left-style')( node )
+		);
+	}
+	if( wRight ){
+		this.drawLine(
+			rect.right - wRight / 2,
+			rect.top,
+			rect.right - wRight / 2,
+			rect.bottom,
+			wRight,
+			this.$.css('border-right-color')( node ),
+			this.$.css('border-right-style')( node )
+		);
+	}
 
 	if(bgImage){
 		this.renderBackgroundImage( node, rect, box, bgImage );

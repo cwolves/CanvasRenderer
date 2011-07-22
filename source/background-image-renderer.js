@@ -3,9 +3,9 @@ html2canvas.prototype.renderBackgroundImage = function( node, rect, box, imgPath
 
 	if( !bgImg ){ return; } // image couldn't be loaded for some reason
 
-	var bgRepeat = this.$.backgroundRepeat  ( node ),
-	  bgPosition = this.$.backgroundPosition( node ).split(' '),
-	      bgSize = this.$.backgroundSize    ( node ),
+	var bgRepeat = this.$.css('background-repeat')  ( node ),
+	  bgPosition = this.$.css('background-position')( node ).split(' '),
+	      bgSize = this.$.css('background-size')    ( node ),
 	  bgSizeSplt = bgSize.split(' '),
 	     repeatX = (bgRepeat != 'no-repeat') && (bgRepeat != 'repeat-y'),
 	     repeatY = (bgRepeat != 'no-repeat') && (bgRepeat != 'repeat-x'),

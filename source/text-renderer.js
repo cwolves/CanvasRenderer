@@ -2,15 +2,15 @@ html2canvas.prototype.analyzeFont = function( txt, rect ){
 	// font-style font-variant font-weight font-size/line-height font-family
 	var    node = txt.parentNode,
 
-	      style = this.$.fontStyle     ( node ),
-	    variant = this.$.fontVariant   ( node ),
-	     weight = this.$.fontWeight    ( node ),
-	       size = this.$.fontSize      ( node ),
-	     family = this.$.fontFamily    ( node ),
-	      color = this.$.color         ( node ),
-	  transform = this.$.textTransform ( node ),
-	      align = this.$.textAlign     ( node ),
-	     vAlign = this.$.verticalAlign ( node );
+	      style = this.$.css('font-style')     ( node ),
+	    variant = this.$.css('font-variant')   ( node ),
+	     weight = this.$.css('font-weight')    ( node ),
+	       size = this.$.css('font-size')      ( node ),
+	     family = this.$.css('font-family')    ( node ),
+	      color = this.$.css('color')          ( node ),
+	  transform = this.$.css('text-transform') ( node ),
+	      align = this.$.css('text-align')     ( node ),
+	     vAlign = this.$.css('vertical-align') ( node );
 
 	this
 		.setFillStyle   ( color )
@@ -40,7 +40,7 @@ html2canvas.prototype.drawText = function( txt, rect ){
 	// Try to draw each word, but if letter spacing is set, we can't draw per word since
 	//   canvas letter-spacing can't be set, so we need to draw each letter.
 	var   node = txt.parentNode,
-	    lSpace = parseFloat( this.$.letterSpacing( node ) ) || 0,
+	    lSpace = parseFloat( this.$.css('letter-spacing')( node ) ) || 0,
 	      splt = range.toString().split(lSpace ? "" : /\b/),
 	       len = splt.length,
 	    chrCtr = 0,
