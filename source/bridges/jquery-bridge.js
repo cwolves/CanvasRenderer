@@ -80,8 +80,8 @@
 		},
 
 		isVisible : function( node ){
-			return (bridge.display( node ) != 'none') &&
-				(bridge.visibility( node ) != 'hidden');
+			return (bridge.css( node, 'display' ) != 'none') &&
+				(bridge.css( node, 'visibility' ) != 'hidden');
 		},
 
 		css : function( node, prop ){
