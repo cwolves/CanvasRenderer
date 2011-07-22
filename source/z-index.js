@@ -10,7 +10,7 @@ html2canvas.prototype.getElementsByZIndex = function( node, running ){
 	if(!visible){ return []; }
 
 	// running values need to go here
-	var opacity = this.$.css('opacity')( node );
+	var opacity = this.$.css( node, 'opacity' );
 	    opacity = parseFloat( opacity == null ? 1 : opacity ) * ( running.opacity == null ? 1 : running.opacity );
 	node.opacity = opacity == null ? 1 : opacity;
 
@@ -30,7 +30,7 @@ html2canvas.prototype.getElementsByZIndex = function( node, running ){
 
 	for( var i=0, c=node.childNodes, l=c.length; i<l; i++ ){
 		elem          = node.childNodes[i];
-		zIndex        = this.$.css('z-index')( elem );
+		zIndex        = this.$.css( elem, 'z-index' );
 		startsContext = this.nodeStartsStackingContext( elem, zIndex, opacity );
 
 		if(startsContext){
@@ -57,12 +57,12 @@ html2canvas.prototype.getElementsByZIndex = function( node, running ){
 };
 
 html2canvas.prototype.nodeStartsStackingContext = function( node, zIndex, opacity ){
-	var   pos = this.$.css('position')( node ),
+	var   pos = this.$.css( node, 'position' ),
 	      IE7 = this.$.browser.IE7,
 	      IE8 = this.$.browser.IE8;
 
-	if(opacity == null){ opacity = this.$.css('opacity') ( node ); }
-	if(zIndex  == null){ zIndex  = this.$.css('z-index') ( node ) || 0; }
+	if(opacity == null){ opacity = this.$.css( node, 'opacity' ); }
+	if(zIndex  == null){ zIndex  = this.$.css( node, 'z-index' ) || 0; }
 
 	zIndex  = parseInt(zIndex);
 	opacity = ~-opacity;

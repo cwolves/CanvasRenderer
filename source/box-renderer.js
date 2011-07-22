@@ -1,11 +1,11 @@
 html2canvas.prototype.drawBoundingBox = function( node, rect ){
-	var wTop = this.$.unitsToPx( this.$.css('border-top-width')   ( node ), rect.height ),
-	  wRight = this.$.unitsToPx( this.$.css('border-right-width') ( node ), rect.width  ),
-	 wBottom = this.$.unitsToPx( this.$.css('border-bottom-width')( node ), rect.height ),
-	   wLeft = this.$.unitsToPx( this.$.css('border-left-width')  ( node ), rect.width  ),
+	var wTop = this.$.unitsToPx( this.$.css( node, 'border-top-width'    ), rect.height ),
+	  wRight = this.$.unitsToPx( this.$.css( node, 'border-right-width'  ), rect.width  ),
+	 wBottom = this.$.unitsToPx( this.$.css( node, 'border-bottom-width' ), rect.height ),
+	   wLeft = this.$.unitsToPx( this.$.css( node, 'border-left-width'   ), rect.width  ),
 	     box = { top : wTop, right : wRight, bottom : wBottom, left : wLeft },
-	 bgColor = this.$.css('background-color')( node ),
-	 bgImage = this.$.css('background-image')( node );
+	 bgColor = this.$.css( node, 'background-color' ),
+	 bgImage = this.$.css( node, 'background-image' );
 
 	// set global opacity
 	this.setOpacity( node.opacity );
@@ -21,8 +21,8 @@ html2canvas.prototype.drawBoundingBox = function( node, rect ){
 			rect.right,
 			rect.top + wTop / 2,
 			wTop,
-			this.$.css('border-top-color')( node ),
-			this.$.css('border-top-style')( node )
+			this.$.css( node, 'border-top-color' ),
+			this.$.css( node, 'border-top-style' )
 		);
 	}
 	if( wBottom ){
@@ -32,8 +32,8 @@ html2canvas.prototype.drawBoundingBox = function( node, rect ){
 			rect.right,
 			rect.bottom - wBottom / 2,
 			wBottom,
-			this.$.css('border-bottom-color')( node ),
-			this.$.css('border-bottom-style')( node )
+			this.$.css( node, 'border-bottom-color' ),
+			this.$.css( node, 'border-bottom-style' )
 		);
 	}
 	if( wLeft ){
@@ -43,8 +43,8 @@ html2canvas.prototype.drawBoundingBox = function( node, rect ){
 			rect.left + wLeft / 2,
 			rect.bottom,
 			wLeft,
-			this.$.css('border-left-color')( node ),
-			this.$.css('border-left-style')( node )
+			this.$.css( node, 'border-left-color' ),
+			this.$.css( node, 'border-left-style' )
 		);
 	}
 	if( wRight ){
@@ -54,8 +54,8 @@ html2canvas.prototype.drawBoundingBox = function( node, rect ){
 			rect.right - wRight / 2,
 			rect.bottom,
 			wRight,
-			this.$.css('border-right-color')( node ),
-			this.$.css('border-right-style')( node )
+			this.$.css( node, 'border-right-color' ),
+			this.$.css( node, 'border-right-style' )
 		);
 	}
 

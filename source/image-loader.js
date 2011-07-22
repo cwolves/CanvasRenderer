@@ -69,7 +69,7 @@ html2canvas.prototype.init.push(function( opts ){
 
 	// pre-load all background images
 	for(var i=0, l=allNodes.length; i<l; i++){
-		var bgImage = this.$.css('background-image')( allNodes[i] );
+		var bgImage = this.$.css( allNodes[i], 'background-image' );
 		if(!bgImage || ( bgImage == 'none' )){ continue; }
 		console.log(bgImage);
 
