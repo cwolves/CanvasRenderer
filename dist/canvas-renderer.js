@@ -3,7 +3,7 @@
  *
  * Copyright 2011, Mark Kahn
  *
- * Date: Thu Jul 21 19:32:43 2011 -0700
+ * Date: Thu Jul 21 20:28:12 2011 -0700
  */
 function html2canvas( opts, loadCB ){
 	this.$       = html2canvas.bridge;
@@ -120,8 +120,12 @@ html2canvas.prototype = {
 		},
 
 		isVisible : function( node ){
-			return (bridge.display( node ) != 'none') &&
-				(bridge.visibility( node ) != 'hidden');
+			return (bridge.css( node, 'display' ) != 'none') &&
+				(bridge.css( node, 'visibility' ) != 'hidden');
+		},
+
+		css : function( node, prop ){
+			return $( node ).css( prop );
 		}
 	};
 
@@ -135,32 +139,6 @@ html2canvas.prototype = {
 				return $( n )[ name ]();
 			};
 		});
-
-	// CSS Properties
-	jQuery.each(
-'margin-top margin-right margin-bottom margin-left \
-padding-top padding-right padding-bottom padding-left \
-border-top-width border-right-width border-bottom-width border-left-width \
-border-top-color border-right-color border-bottom-color border-left-color \
-border-top-style border-right-style border-bottom-style border-left-style \
-outline-top-width outline-right-width outline-bottom-width outline-left-width \
-outline-top-color outline-right-color outline-bottom-color outline-left-color \
-outline-top-style outline-right-style outline-bottom-style outline-left-style \
-background-color background-repeat background-attachment background-position background-size \
-font-family font-style font-variant font-weight font-size color \
-word-spacing letter-spacing text-decoration vertical-align text-transform text-align text-indent line-height white-space \
-list-style-type list-style-image list-style-position opacity position z-index visibility display'
-	.split(' '), function( i, name ){
-		if( !name ){ return; }
-
-		bridge[ $.camelCase( name ) ] = function( n ){
-			// can't get CSS on text nodes
-			if( 1 != n.nodeType ){ return; }
-
-			return $( n ).css( name );
-		};
-	});
-
 })( jQuery );
 var imgs = {},
      cbs = [];
@@ -233,7 +211,7 @@ html2canvas.prototype.init.push(function( opts ){
 
 	// pre-load all background images
 	for(var i=0, l=allNodes.length; i<l; i++){
-		var bgImage = this.$.css('background-image')( allNodes[i] );
+		var bgImage = this.$.css( allNodes[i], 'background-image' );
 		if(!bgImage || ( bgImage == 'none' )){ continue; }
 		console.log(bgImage);
 
@@ -328,13 +306,13 @@ html2canvas.prototype.appendToNode = function( node ){
 	node.appendChild( this.canvas );
 };
 html2canvas.prototype.drawBoundingBox = function( node, rect ){
-	var wTop = this.$.unitsToPx( this.$.css('border-top-width')   ( node ), rect.height ),
-	  wRight = this.$.unitsToPx( this.$.css('border-right-width') ( node ), rect.width  ),
-	 wBottom = this.$.unitsToPx( this.$.css('border-bottom-width')( node ), rect.height ),
-	   wLeft = this.$.unitsToPx( this.$.css('border-left-width')  ( node ), rect.width  ),
+	var wTop = this.$.unitsToPx( this.$.css( node, 'border-top-width'    ), rect.height ),
+	  wRight = this.$.unitsToPx( this.$.css( node, 'border-right-width'  ), rect.width  ),
+	 wBottom = this.$.unitsToPx( this.$.css( node, 'border-bottom-width' ), rect.height ),
+	   wLeft = this.$.unitsToPx( this.$.css( node, 'border-left-width'   ), rect.width  ),
 	     box = { top : wTop, right : wRight, bottom : wBottom, left : wLeft },
-	 bgColor = this.$.css('background-color')( node ),
-	 bgImage = this.$.css('background-image')( node );
+	 bgColor = this.$.css( node, 'background-color' ),
+	 bgImage = this.$.css( node, 'background-image' );
 
 	// set global opacity
 	this.setOpacity( node.opacity );
@@ -350,8 +328,8 @@ html2canvas.prototype.drawBoundingBox = function( node, rect ){
 			rect.right,
 			rect.top + wTop / 2,
 			wTop,
-			this.$.css('border-top-color')( node ),
-			this.$.css('border-top-style')( node )
+			this.$.css( node, 'border-top-color' ),
+			this.$.css( node, 'border-top-style' )
 		);
 	}
 	if( wBottom ){
@@ -361,8 +339,8 @@ html2canvas.prototype.drawBoundingBox = function( node, rect ){
 			rect.right,
 			rect.bottom - wBottom / 2,
 			wBottom,
-			this.$.css('border-bottom-color')( node ),
-			this.$.css('border-bottom-style')( node )
+			this.$.css( node, 'border-bottom-color' ),
+			this.$.css( node, 'border-bottom-style' )
 		);
 	}
 	if( wLeft ){
@@ -372,8 +350,8 @@ html2canvas.prototype.drawBoundingBox = function( node, rect ){
 			rect.left + wLeft / 2,
 			rect.bottom,
 			wLeft,
-			this.$.css('border-left-color')( node ),
-			this.$.css('border-left-style')( node )
+			this.$.css( node, 'border-left-color' ),
+			this.$.css( node, 'border-left-style' )
 		);
 	}
 	if( wRight ){
@@ -383,8 +361,8 @@ html2canvas.prototype.drawBoundingBox = function( node, rect ){
 			rect.right - wRight / 2,
 			rect.bottom,
 			wRight,
-			this.$.css('border-right-color')( node ),
-			this.$.css('border-right-style')( node )
+			this.$.css( node, 'border-right-color' ),
+			this.$.css( node, 'border-right-style' )
 		);
 	}
 
@@ -451,9 +429,9 @@ html2canvas.prototype.renderBackgroundImage = function( node, rect, box, imgPath
 
 	if( !bgImg ){ return; } // image couldn't be loaded for some reason
 
-	var bgRepeat = this.$.css('background-repeat')  ( node ),
-	  bgPosition = this.$.css('background-position')( node ).split(' '),
-	      bgSize = this.$.css('background-size')    ( node ),
+	var bgRepeat = this.$.css( node, 'background-repeat'   ),
+	  bgPosition = this.$.css( node, 'background-position' ).split(' '),
+	      bgSize = this.$.css( node, 'background-size'     ),
 	  bgSizeSplt = bgSize.split(' '),
 	     repeatX = (bgRepeat != 'no-repeat') && (bgRepeat != 'repeat-y'),
 	     repeatY = (bgRepeat != 'no-repeat') && (bgRepeat != 'repeat-x'),
@@ -502,15 +480,15 @@ html2canvas.prototype.analyzeFont = function( txt, rect ){
 	// font-style font-variant font-weight font-size/line-height font-family
 	var    node = txt.parentNode,
 
-	      style = this.$.css('font-style')     ( node ),
-	    variant = this.$.css('font-variant')   ( node ),
-	     weight = this.$.css('font-weight')    ( node ),
-	       size = this.$.css('font-size')      ( node ),
-	     family = this.$.css('font-family')    ( node ),
-	      color = this.$.css('color')          ( node ),
-	  transform = this.$.css('text-transform') ( node ),
-	      align = this.$.css('text-align')     ( node ),
-	     vAlign = this.$.css('vertical-align') ( node );
+	      style = this.$.css( node, 'font-style'     ),
+	    variant = this.$.css( node, 'font-variant'   ),
+	     weight = this.$.css( node, 'font-weight'    ),
+	       size = this.$.css( node, 'font-size'      ),
+	     family = this.$.css( node, 'font-family'    ),
+	      color = this.$.css( node, 'color'          ),
+	  transform = this.$.css( node, 'text-transform' ),
+	      align = this.$.css( node, 'text-align'     ),
+	     vAlign = this.$.css( node, 'vertical-align' );
 
 	this
 		.setFillStyle   ( color )
@@ -540,7 +518,7 @@ html2canvas.prototype.drawText = function( txt, rect ){
 	// Try to draw each word, but if letter spacing is set, we can't draw per word since
 	//   canvas letter-spacing can't be set, so we need to draw each letter.
 	var   node = txt.parentNode,
-	    lSpace = parseFloat( this.$.css('letter-spacing')( node ) ) || 0,
+	    lSpace = parseFloat( this.$.css( node, 'letter-spacing' ) ) || 0,
 	      splt = range.toString().split(lSpace ? "" : /\b/),
 	       len = splt.length,
 	    chrCtr = 0,
@@ -586,7 +564,7 @@ html2canvas.prototype.getElementsByZIndex = function( node, running ){
 	if(!visible){ return []; }
 
 	// running values need to go here
-	var opacity = this.$.css('opacity')( node );
+	var opacity = this.$.css( node, 'opacity' );
 	    opacity = parseFloat( opacity == null ? 1 : opacity ) * ( running.opacity == null ? 1 : running.opacity );
 	node.opacity = opacity == null ? 1 : opacity;
 
@@ -606,7 +584,7 @@ html2canvas.prototype.getElementsByZIndex = function( node, running ){
 
 	for( var i=0, c=node.childNodes, l=c.length; i<l; i++ ){
 		elem          = node.childNodes[i];
-		zIndex        = this.$.css('z-index')( elem );
+		zIndex        = this.$.css( elem, 'z-index' );
 		startsContext = this.nodeStartsStackingContext( elem, zIndex, opacity );
 
 		if(startsContext){
@@ -633,12 +611,12 @@ html2canvas.prototype.getElementsByZIndex = function( node, running ){
 };
 
 html2canvas.prototype.nodeStartsStackingContext = function( node, zIndex, opacity ){
-	var   pos = this.$.css('position')( node ),
+	var   pos = this.$.css( node, 'position' ),
 	      IE7 = this.$.browser.IE7,
 	      IE8 = this.$.browser.IE8;
 
-	if(opacity == null){ opacity = this.$.css('opacity') ( node ); }
-	if(zIndex  == null){ zIndex  = this.$.css('z-index') ( node ) || 0; }
+	if(opacity == null){ opacity = this.$.css( node, 'opacity' ); }
+	if(zIndex  == null){ zIndex  = this.$.css( node, 'z-index' ) || 0; }
 
 	zIndex  = parseInt(zIndex);
 	opacity = ~-opacity;
