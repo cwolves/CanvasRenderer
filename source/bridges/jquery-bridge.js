@@ -82,6 +82,10 @@
 		isVisible : function( node ){
 			return (bridge.display( node ) != 'none') &&
 				(bridge.visibility( node ) != 'hidden');
+		},
+
+		css : function( node, prop ){
+			return $( node ).css( prop );
 		}
 	};
 
